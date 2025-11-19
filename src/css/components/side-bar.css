@@ -1,13 +1,14 @@
 .side-bar {
   background-color: var(--color-neutral-300);
-  width: 38rem;
+  width: 24vw;
+  min-width: 32rem;
   height: 100vh;
   padding: 2.4rem;
   user-select: none;
-  position: sticky;
   top: 0;
-  transition: all 2s ease;
-  position: relative;
+  position: absolute;
+  z-index: 99;
+  transition: width 2s ease;
 }
 .side-bar--close {
   transform: translateX(38rem);
@@ -17,6 +18,7 @@
   right: 410px;
   transform: rotate(90deg);
   transition: transform 2s ease;
+  background-color: var(--color-neutral-300);
 }
 /* 
 =======================================
@@ -50,7 +52,8 @@
   width: 2rem;
   height: 2rem;
 }
-.side-bar__open-close-btn-icon {
+.side-bar__close-btn-icon,
+.side-bar__open-btn-icon {
   transform: rotate(-90deg);
   width: 4rem;
   height: 4rem;
@@ -58,8 +61,17 @@
   padding: 0.8rem;
   transition: all 0.2s ease;
 }
+.side-bar__open-btn-icon {
+  display: none;
+  top: 26px;
+  right: -48px;
+  position: absolute;
+  transition: display 0.2s ease;
+  background-color: var(--color-neutral-300);
+}
 .side-bar__profile:hover,
-.side-bar__open-close-btn-icon:hover {
+.side-bar__close-btn-icon:hover,
+.side-bar__open-btn-icon:hover {
   background-color: var(--color-neutral-400);
 }
 

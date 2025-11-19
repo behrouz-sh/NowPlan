@@ -1,14 +1,16 @@
 @import url(../variables.css);
 @import url(../typography.css);
 @import url(../base.css);
+@import url(../grid.css);
 @import url(../components/side-bar.css);
 .app {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  min-height: 100vh;
-  transition: all 2s ease;
+  margin-right: 24vw;
+  transition: all 500ms ease;
+}
+.app--open {
+  padding-right: 28rem;
 }
 
-.app--full {
-  grid-template-columns: 0px 1fr;
+.side-bar__profile-icon {
+  color: black;
 }
