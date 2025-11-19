@@ -1,0 +1,204 @@
+.side-bar {
+  background-color: var(--color-neutral-300);
+  width: 38rem;
+  height: 100vh;
+  padding: 2.4rem;
+  user-select: none;
+  position: sticky;
+  top: 0;
+  transition: all 2s ease;
+  position: relative;
+}
+.side-bar--close {
+  transform: translateX(38rem);
+}
+.side-bar--close .side-bar__open-close-btn-icon {
+  position: absolute;
+  right: 410px;
+  transform: rotate(90deg);
+  transition: transform 2s ease;
+}
+/* 
+=======================================
+                Profile
+=======================================*/
+.side-bar__profile-warp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-64);
+}
+.side-bar__profile {
+  display: flex;
+  align-items: center;
+  column-gap: var(--space-16);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+.side-bar__profile-img {
+  width: 4rem;
+  height: 4rem;
+  background-image: url(../../../assets/images/profile.jpg);
+  border-radius: var(--radius-full);
+}
+.side-bar__profile-name-text {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+}
+.side-bar__profile-icon {
+  width: 2rem;
+  height: 2rem;
+}
+.side-bar__open-close-btn-icon {
+  transform: rotate(-90deg);
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-md);
+  padding: 0.8rem;
+  transition: all 0.2s ease;
+}
+.side-bar__profile:hover,
+.side-bar__open-close-btn-icon:hover {
+  background-color: var(--color-neutral-400);
+}
+
+/*
+=======================================
+            Slid Bar List
+=======================================*/
+.side-bar__list {
+  margin-bottom: 4rem;
+}
+/* .side-bar__list-item {} */
+.side-bar__list-link {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  padding: 1.2rem 1.6rem;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  border-radius: var(--radius-md);
+}
+.side-bar__list-link:hover {
+  background-color: var(--color-neutral-400);
+}
+
+.side-bar__list-icon {
+  color: var(--color-neutral-800);
+}
+.side-bar__list-text {
+  font-size: var(--font-size-2xl);
+}
+
+.side-bar__list-link-add-task {
+  padding: 0.4rem 0.8rem;
+  column-gap: 1.2rem;
+}
+.side-bar__list-icon-add-task {
+  width: 4rem;
+  height: 4rem;
+  padding: 0.8rem;
+  background-color: var(--color-primary-300);
+  border-radius: var(--radius-full);
+  color: var(--color-neutral-100);
+}
+.side-bar__list-link--active,
+.side-bar__list-link--active:hover {
+  background-color: var(--color-primary-100);
+}
+.side-bar__list-icon--active,
+.side-bar__list-icon--active:hover {
+  color: var(--color-primary-300);
+}
+.side-bar__list-text--active,
+.side-bar__list-text--active:hover {
+  color: var(--color-primary-300);
+}
+
+/*
+=======================================
+            Slid Bar Project
+=======================================*/
+.side-bar__project-warp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.8rem;
+  color: var(--color-neutral-800);
+  border-radius: 0.8rem;
+  transition: all 0.2s ease;
+}
+.side-bar__project-warp:hover {
+  background-color: var(--color-neutral-400);
+}
+.side-bar__project-text {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
+}
+.side-bar__project-icons {
+  display: flex;
+  align-items: center;
+  column-gap: var(--space-2);
+}
+.side-bar__project-arrow-icon,
+.side-bar__project-plus-icon {
+  padding: 0.2rem;
+  border-radius: 0.8rem;
+  display: none;
+  transition: all 0.2s ease;
+}
+.side-bar__project-arrow-icon:hover,
+.side-bar__project-plus-icon:hover {
+  background-color: var(--color-neutral-500);
+}
+.side-bar:hover .side-bar__project-arrow-icon,
+.side-bar__project-warp:hover .side-bar__project-plus-icon {
+  display: block;
+}
+
+/* .side-bar__project-list {} */
+.side-bar__project-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  color: var(--color-neutral-800);
+}
+.side-bar__project-list-item:hover {
+  background-color: var(--color-neutral-400);
+}
+.side-bar__project-list-link {
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+  width: 100%;
+}
+/* .side-bar__project-list-icon {} */
+.side-bar__project-list-text {
+  line-height: var(--line-height-normal);
+}
+.side-bar__project-list-count-text {
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  transition: all 0.2s ease;
+}
+.side-bar__project-list-more-icon {
+  padding: 0.2rem;
+  border-radius: 0.8rem;
+  transition: all 0.2s ease;
+  display: none;
+}
+.side-bar__project-list-more-icon:hover {
+  background-color: var(--color-neutral-500);
+}
+.side-bar__project-list-item:hover .side-bar__project-list-count-text {
+  display: none;
+}
+.side-bar__project-list-item:hover .side-bar__project-list-more-icon {
+  display: block;
+}

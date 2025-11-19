@@ -1,0 +1,14 @@
+@import url(../variables.css);
+@import url(../typography.css);
+@import url(../base.css);
+@import url(../components/side-bar.css);
+.app {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  min-height: 100vh;
+  transition: all 2s ease;
+}
+
+.app--full {
+  grid-template-columns: 0px 1fr;
+}
