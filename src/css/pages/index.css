@@ -1,16 +1,43 @@
 @import url(../variables.css);
 @import url(../typography.css);
 @import url(../base.css);
-@import url(../grid.css);
 @import url(../components/side-bar.css);
-.app {
-  margin-right: 24vw;
-  transition: all 500ms ease;
+@import url(../responsive.css);
+.input {
+  padding: 12rem 2.4rem 0;
 }
-.app--open {
-  padding-right: 28rem;
+.title-section {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-medium);
 }
-
-.side-bar__profile-icon {
-  color: black;
+.input__add {
+  text-align: center;
+  width: 40rem;
+  max-width: 100%;
+  margin: 16rem auto 0;
+}
+.input__add-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 1.6rem;
+}
+.input__add-description {
+  margin-bottom: 1.6rem;
+}
+.input__add-btn {
+}
+.btn-md {
+  font-size: var(--font-size-lg);
+  padding: 0.8rem 1.6rem;
+  background-color: var(--color-primary-300);
+  color: var(--color-neutral-100);
+  border: none;
+  border-radius: 0.8rem;
+}
+.btn-md:hover {
+  transition: background-color 500ms ease;
+  background-color: var(--color-primary-400);
+}
+.input__add-btn-icon {
+  margin-left: 0.8rem;
 }

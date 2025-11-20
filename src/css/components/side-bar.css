@@ -1,7 +1,6 @@
 .side-bar {
+  display: none;
   background-color: var(--color-neutral-300);
-  width: 24vw;
-  min-width: 32rem;
   height: 100vh;
   padding: 2.4rem;
   user-select: none;
@@ -10,8 +9,9 @@
   z-index: 99;
   transition: width 2s ease;
 }
-.side-bar--close {
-  transform: translateX(38rem);
+.side-bar--open {
+  width: 48rem;
+  display: block;
 }
 .side-bar--close .side-bar__open-close-btn-icon {
   position: absolute;
@@ -64,9 +64,9 @@
 .side-bar__open-btn-icon {
   display: none;
   top: 26px;
-  right: -48px;
+  right: -60px;
   position: absolute;
-  transition: display 0.2s ease;
+  transition: all 0.2s ease;
   background-color: var(--color-neutral-300);
 }
 .side-bar__profile:hover,
