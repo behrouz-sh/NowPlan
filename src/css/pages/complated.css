@@ -1,0 +1,8 @@
+.complated {
+  display: none;
+  padding: 2.4rem;
+}
+.task__complated {
+  display: flex;
+  flex-direction: column-reverse;
+}

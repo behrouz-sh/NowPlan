@@ -1,0 +1,85 @@
+@import url(./variables.css);
+@import url(./typography.css);
+@import url(./base.css);
+@import url(../css/components/about-page.css);
+@import url(../css/components/add-task-box.css);
+
+.main {
+  transition: all 500ms ease;
+}
+.main--open {
+  margin-right: 48rem;
+}
+.title-section {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  padding: 1.6rem;
+  border-bottom: 1px solid var(--color-neutral-300);
+  border-radius: 0 0 1.6rem 1.6rem;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0px 20px 20px 0px rgba(237, 239, 243, 0.5);
+}
+
+/*=======================================
+          Undeveloped pages
+=======================================*/
+.pagenone {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  width: 56rem;
+  top: 260px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 100;
+  background-color: var(--color-neutral-100);
+  border: 1px solid var(--color-neutral-500);
+  padding: 4.8rem;
+  border-radius: 2.4rem;
+  row-gap: 0.8rem;
+  transition: opacity 2s ease;
+}
+.pagenone__layer {
+  content: " ";
+  width: 100vw;
+  height: 100vh;
+  inset: 0;
+  background-color: rgba(107, 114, 128, 0.5);
+  backdrop-filter: blur(0.8rem);
+  position: fixed;
+  z-index: 99;
+  display: none;
+  transition: opacity 2s ease;
+}
+.pagenone__title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 0.4rem;
+}
+.pagenone__text {
+  margin-bottom: 1.2em;
+  color: var(--color-neutral-800);
+}
+.pagenone__btn-close {
+  padding: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.8rem;
+  background-color: var(--color-neutral-400);
+  color: var(--color-neutral-900);
+  width: 100%;
+}
+.pagenone__btn-close:hover {
+  transition: all 500ms ease;
+  background-color: var(--color-neutral-500);
+}
+
+/*=======================================
+              Box Add Task
+=======================================*/

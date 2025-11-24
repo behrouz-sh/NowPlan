@@ -132,6 +132,9 @@ table {
 }
 
 /* ================== Default ================== */
+::selection {
+  background-color: #e7e6ff;
+}
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -160,13 +163,5 @@ textarea {
 .container {
   width: 920px;
   margin: 0 auto;
-  position: relative;
   height: 100vh;
-}
-
-.app {
-  transition: all 500ms ease;
-}
-.app--open {
-  margin-right: 48rem;
 }

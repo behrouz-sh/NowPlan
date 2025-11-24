@@ -1,69 +1,12 @@
-const $ = document;
-/*=============================================
-              Open-Close Sidebar
-=============================================*/
-$.querySelector(".side-bar__open-btn-icon").addEventListener("click", () => {
-  $.querySelector(".app").classList.toggle("app--open");
-  $.querySelector(".side-bar").classList.toggle("side-bar--open");
-  $.querySelector(".side-bar__open-btn-icon").style.display = "none";
-});
-$.querySelector(".side-bar__close-btn-icon").addEventListener("click", () => {
-  $.querySelector(".app").classList.toggle("app--open");
-  $.querySelector(".side-bar").classList.toggle("side-bar--open");
-  $.querySelector(".side-bar__open-btn-icon").style.display = "inline-block";
-});
-
-/*=============================================
-              Feature Unenabel
-=============================================*/
-const idUnenabel = ["search", "today", "tasks", "filter-label", "profile"];
-idUnenabel.forEach((id) => {
-  $.getElementById(id).addEventListener("click", () => {
-    $.querySelector(".pagenone").style.opacity = "1";
-    $.querySelector(".pagenone").style.display = "flex";
-    $.querySelector(".pagenone__layer").style.opacity = "1";
-    $.querySelector(".pagenone__layer").style.display = "block";
-  });
-});
-$.querySelector(".pagenone__btn-close").addEventListener("click", () => {
-  $.querySelector(".pagenone").style.opacity = "0";
-  $.querySelector(".pagenone").style.display = "none";
-  $.querySelector(".pagenone__layer").style.opacity = "0";
-  $.querySelector(".pagenone__layer").style.display = "none";
-});
-
-/*=============================================
-              Not Sidebar (move)**
-=============================================*/
-const btn = $.getElementById("pickDateBtn");
-const dateInput = $.getElementById("hiddenDate");
-
-btn.addEventListener("click", () => {
-  dateInput.showPicker();
-});
-
-dateInput.addEventListener("change", () => {
-  console.log(dateInput.value);
-});
-
-$.querySelector(".input__add-btn").addEventListener("click", () => {
-  $.querySelector(".input__add").style.display = "none";
-  $.querySelector(".input__add-task-box").style.display = "block";
-});
-
-if (loadTasks().length !== 0) {
+if (loadTasks().length) {
+  $.querySelector(".about-page").style.display = "none";
+  $.querySelector(".tasks").style.display = "block";
   $.querySelector(".task__add").style.display = "flex";
 }
-$.querySelector("#input__add-task-btn-close").addEventListener("click", () => {
-  $.querySelector(".input__add-task-box").style.display = "none";
-  if (loadTasks().length === 0) {
-    $.querySelector(".input__add").style.display = "block";
-  } else {
-    $.querySelector(".task__add").style.display = "flex";
-  }
-});
 
-// ====================================================================================
+/*=============================================
+               Task Add Function
+=============================================*/
 function saveTasks(tasks) {
   localStorage.setItem("todoTasks", JSON.stringify(tasks));
 }
@@ -253,52 +196,46 @@ function renderAllTasks() {
   const tasksContainer = $.querySelector(".tasks");
   tasksContainer.innerHTML = "";
   tasks.forEach((task) => {
-    addTaskToDOM(task);
+    if (task.completed === false) {
+      addTaskToDOM(task);
+    }
   });
 }
 
-$.querySelector(".input__add-task-btn").addEventListener("click", () => {
-  const newtask = {
-    id: Date.now(),
-    title: $.querySelector(".input__add-task-box-title").value,
-    description: $.querySelector(".input__add-task-box-description").value,
-    completed: false, //Not Devlopment
-    createdAt: -1, //Not Devlopment
-    dueDate: -1, //Not Devlopment
-    priority: -1, //Not Devlopment
-    tags: -1, //Not Devlopment
-  };
-  if ($.querySelector(".input__add-task-box-title").value !== "") {
-    addNewTasks(newtask);
-  }
-  $.querySelector(".input__add-task-box-title").value = "";
-  $.querySelector(".input__add-task-box-description").value = "";
-});
-// ====================================================================================
-if (loadTasks().length !== 0) {
-  $.querySelector(".input__add").style.display = "none";
-  renderAllTasks();
-}
-
-$.querySelector(".task__add").addEventListener("click", () => {
-  $.querySelector(".task__add").style.display = "none";
-  $.querySelector(".input__add-task-box").style.display = "block";
-});
-// ====================================================================================
+/*=============================================
+              Task Remove Function 
+=============================================*/
 function setupTaskEvents() {
-  const tasksContainer = $.querySelector(".tasks");
-
-  tasksContainer.addEventListener("click", function (e) {
+  $.querySelector(".tasks").addEventListener("click", function (e) {
     if (e.target.closest(".task__tick-Square-icon")) {
       const taskElement = e.target.closest(".task");
-      const taskId = taskElement.getAttribute("data-task-id");
+      const taskId = Number(taskElement.getAttribute("data-task-id"));
       completeTask(taskId);
     }
   });
 }
 
+function loadCompleted() {
+  const TasksCompleted = localStorage.getItem("Completed");
+  return TasksCompleted ? JSON.parse(TasksCompleted) : [];
+}
+
+function saveCompleted(tasks) {
+  localStorage.setItem("Completed", JSON.stringify(tasks));
+}
+
 function completeTask(taskId) {
   const taskElement = $.querySelector(`[data-task-id="${taskId}"]`);
+  loadTasks().forEach((task) => {
+    if (task.id === taskId) {
+      task.completed === true;
+      if ((task.completed = true)) {
+        const Completeds = loadCompleted();
+        Completeds.push(task);
+        saveCompleted(Completeds);
+      }
+    }
+  });
   if (taskElement) {
     taskElement.remove();
   }
@@ -306,7 +243,57 @@ function completeTask(taskId) {
   const updatedTasks = tasks.filter((task) => task.id != taskId);
   saveTasks(updatedTasks);
 }
-document.addEventListener("DOMContentLoaded", function () {
-  setupTaskEvents();
+setupTaskEvents();
+renderAllTasks();
+
+/*=============================================
+                   Add Task 
+=============================================*/
+$.querySelector(".task__add").addEventListener("click", () => {
+  $.querySelector(".task__add").style.display = "none";
+  $.querySelector("#add-task-box--input").style.display = "block";
   renderAllTasks();
 });
+
+/*=============================================
+              Input Add Task Box
+=============================================*/
+$.getElementById("add-task-box-btn-open--input").addEventListener(
+  "click",
+  () => {
+    let taskTitle = $.querySelector("#add-task-box-title--input");
+    let taskDscription = $.querySelector("#add-task-box-description--input");
+    const newtask = {
+      id: Date.now(),
+      title: taskTitle.value,
+      description: taskDscription.value,
+      completed: false,
+      createdAt: -1, //Not Devlopment
+      dueDate: -1, //Not Devlopment
+      priority: -1, //Not Devlopment
+      tags: -1, //Not Devlopment
+    };
+    if (taskTitle.value) {
+      addNewTasks(newtask);
+      taskTitle.value = "";
+      taskDscription.value = "";
+    }
+  }
+);
+
+/*=============================================
+              Input Cansel** Task Box
+=============================================*/
+$.getElementById("add-task-box-btn-close--input").addEventListener(
+  "click",
+  () => {
+    if (loadTasks().length) {
+      $.querySelector("#add-task-box--input").style.display = "none";
+      $.querySelector(".task__add").style.display = "flex";
+    } else {
+      $.querySelector("#add-task-box--input").style.display = "none";
+      $.querySelector(".about-page").style.display = "block";
+      $.querySelector(".task__add").style.display = "none";
+    }
+  }
+);

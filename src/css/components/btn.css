@@ -1,0 +1,38 @@
+.btn-sm {
+  font-size: var(--font-size-lg);
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-primary-300);
+  color: var(--color-neutral-100);
+  border: none;
+  border-radius: 0.8rem;
+}
+
+.btn-sm:hover {
+  transition: background-color 500ms ease;
+  background-color: var(--color-primary-400);
+}
+.btn-sm-neutral {
+  font-size: var(--font-size-lg);
+  padding: 0.6rem 1.6rem;
+  background-color: var(--color-neutral-400);
+  color: var(--color-neutral-800);
+  border: none;
+  border-radius: 0.8rem;
+}
+.btn-sm-neutral:hover {
+  transition: background-color 500ms ease;
+
+  background-color: var(--color-neutral-500);
+}
+.btn-md {
+  font-size: var(--font-size-lg);
+  padding: 0.8rem 1.6rem;
+  background-color: var(--color-primary-300);
+  color: var(--color-neutral-100);
+  border: none;
+  border-radius: 0.8rem;
+}
+.btn-md:hover {
+  transition: background-color 500ms ease;
+  background-color: var(--color-primary-400);
+}

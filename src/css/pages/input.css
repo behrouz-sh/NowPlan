@@ -1,55 +1,45 @@
 @import url(../variables.css);
 @import url(../typography.css);
 @import url(../base.css);
-@import url(../components/side-bar.css);
-@import url(../responsive.css);
+@import url(../components/sidebar.css);
+@import url(../components/btn.css);
+
+/*=======================================
+            Input Section
+=======================================*/
 .input {
-  padding: 12rem 2.4rem 0;
+  padding: 2.4rem;
 }
-.title-section {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-medium);
-}
-.input__add {
-  text-align: center;
-  width: 40rem;
-  max-width: 100%;
-  margin: 16rem auto 0;
-}
-.input__add-title {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1.6rem;
-}
-.input__add-description {
-  margin-bottom: 1.6rem;
-}
-.input__add-btn {
-}
-.btn-md {
-  font-size: var(--font-size-lg);
-  padding: 0.8rem 1.6rem;
-  background-color: var(--color-primary-300);
-  color: var(--color-neutral-100);
-  border: none;
-  border-radius: 0.8rem;
-}
-.btn-md:hover {
-  transition: background-color 500ms ease;
-  background-color: var(--color-primary-400);
-}
-.input__add-btn-icon {
-  margin-left: 0.8rem;
-}
-/* 
-===============================================
- */
+
+/*=======================================
+              Box Add Task
+=======================================*/
 .input__add-task-box {
   padding: 24px;
   border: 1px solid var(--color-neutral-400);
   border-radius: 3.2rem;
-  margin-top: 2.4rem;
+
   display: none;
+}
+.input__add-task-box--open {
+  display: block !important;
+  position: absolute;
+  right: 0;
+  z-index: 100;
+  background: #fff;
+  width: 92rem;
+  height: fit-content;
+  inset: 0;
+  margin: auto;
+  /* box-shadow: 0 0 120px rgba(30, 30, 30, 0.5); */
+  border-width: 2px;
+}
+.input__add-task-box-abs--active {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: block;
+  z-index: 150;
 }
 .input__add-task-box-title {
   font-size: var(--font-size-xl);
@@ -120,95 +110,12 @@
 }
 .input__add-task-btn {
 }
-/* ================================================== */
-
-.btn-sm {
-  font-size: var(--font-size-lg);
-  padding: 0.6rem 1.2rem;
-  background-color: var(--color-primary-300);
-  color: var(--color-neutral-100);
-  border: none;
-  border-radius: 0.8rem;
-}
-
-.btn-sm:hover {
-  transition: background-color 500ms ease;
-  background-color: var(--color-primary-400);
-}
-.btn-sm-neutral {
-  font-size: var(--font-size-lg);
-  padding: 0.6rem 1.6rem;
-  background-color: var(--color-neutral-400);
-  color: var(--color-neutral-800);
-  border: none;
-  border-radius: 0.8rem;
-}
-.btn-sm-neutral:hover {
-  transition: background-color 500ms ease;
-
-  background-color: var(--color-neutral-500);
-}
-/* ================================================== */
-
-.pagenone {
-  position: absolute;
-  display: none;
-  flex-direction: column;
-  width: 56rem;
-  top: 260px;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  text-align: center;
-  z-index: 100;
-  background-color: var(--color-neutral-100);
-  border: 1px solid var(--color-neutral-500);
-  padding: 4.8rem;
-  border-radius: 2.4rem;
-  row-gap: 0.8rem;
-  opacity: 0;
-  transition: opacity 2s ease;
-}
-.pagenone__layer {
-  content: " ";
-  width: 100vw;
-  height: 100vh;
-  inset: 0;
-  background-color: rgba(107, 114, 128, 0.5);
-  backdrop-filter: blur(0.8rem);
-  position: absolute;
-  z-index: 99;
-  opacity: 0;
-  display: none;
-  transition: opacity 2s ease;
-}
-.pagenone__title {
-  font-size: 2.2rem;
-  font-weight: 900;
-  margin-bottom: 0.4rem;
-}
-.pagenone__text {
-  margin-bottom: 1.2em;
-  color: var(--color-neutral-800);
-}
-.pagenone__btn-close {
-  padding: 0.8rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 0.8rem;
-  background-color: var(--color-neutral-400);
-  color: var(--color-neutral-900);
-  width: 100%;
-}
-.pagenone__btn-close:hover {
-  transition: all 500ms ease;
-  background-color: var(--color-neutral-500);
-}
-/* ================================================== */
+/*=======================================
+                Tasks
+=======================================*/
 .tasks {
   margin: 2.4rem 0;
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 .task {
