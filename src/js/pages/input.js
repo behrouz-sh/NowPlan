@@ -15,28 +15,57 @@ function loadTasks() {
   return Tasks ? JSON.parse(Tasks) : [];
 }
 function addTaskToDOM(task) {
+  let border = "#6b7280";
+  let background = "rgba(107, 114, 128, 0.12)";
+  switch (task.priority) {
+    case "priority-1":
+      border = "#EF4444";
+      background = "rgba(254, 226, 226, 0.5)";
+      break;
+
+    case "priority-2":
+      border = "#FACC15";
+      background = "rgba(250, 204, 21, 0.12)";
+      break;
+
+    case "priority-3":
+      border = "#3B82F6";
+      background = "rgba(59, 130, 246, 0.05)";
+      break;
+  }
+
   const taskHTML = `<div class="task" data-task-id="${task.id}">
       <div class="task__warp">
         <svg
-          class="task__tick-Square-icon"
+        class="task__tick-Square-icon"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        >
+        <rect
+          x="0"
+          y="0"
           width="20"
           height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-        >
-          <path
-            class="task__tick-icon"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M13.409 7.58052C13.653 7.8246 13.653 8.22032 13.409 8.4644L9.45397 12.4194C9.20993 12.6634 8.81427 12.6635 8.57018 12.4195L6.59184 10.442C6.34771 10.198 6.34763 9.80224 6.59166 9.55811C6.83568 9.31398 7.23141 9.3139 7.47554 9.55793L9.01193 11.0937L12.5251 7.58052C12.7692 7.33644 13.1649 7.33644 13.409 7.58052Z"
-            fill="none"
-          />
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M3.53592 3.53592C4.92573 2.1461 7.07476 1.6665 9.99984 1.6665C12.9249 1.6665 15.0739 2.1461 16.4638 3.53592C17.8536 4.92573 18.3332 7.07476 18.3332 9.99984C18.3332 12.9249 17.8536 15.0739 16.4638 16.4638C15.0739 17.8536 12.9249 18.3332 9.99984 18.3332C7.07476 18.3332 4.92573 17.8536 3.53592 16.4638C2.1461 15.0739 1.6665 12.9249 1.6665 9.99984C1.6665 7.07476 2.1461 4.92573 3.53592 3.53592ZM4.4198 4.4198C3.40066 5.43894 2.9165 7.14409 2.9165 9.99984C2.9165 12.8556 3.40066 14.5607 4.4198 15.5799C5.43894 16.599 7.14409 17.0832 9.99984 17.0832C12.8556 17.0832 14.5607 16.599 15.5799 15.5799C16.599 14.5607 17.0832 12.8556 17.0832 9.99984C17.0832 7.14409 16.599 5.43894 15.5799 4.4198C14.5607 3.40066 12.8556 2.9165 9.99984 2.9165C7.14409 2.9165 5.43894 3.40066 4.4198 4.4198Z"
-            fill="#1E1E1E"
-          />
+          fill="${background}"
+          rx="4"
+          ry="4"
+        />
+
+        <path
+        class="task__tick-icon"
+
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M13.409 7.58052C13.653 7.8246 13.653 8.22032 13.409 8.4644L9.45397 12.4194C9.20993 12.6634 8.81427 12.6635 8.57018 12.4195L6.59184 10.442C6.34771 10.198 6.34763 9.80224 6.59166 9.55811C6.83568 9.31398 7.23141 9.3139 7.47554 9.55793L9.01193 11.0937L12.5251 7.58052C12.7692 7.33644 13.1649 7.33644 13.409 7.58052Z"
+          fill="${border}"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M3.53592 3.53592C4.92573 2.1461 7.07476 1.6665 9.99984 1.6665C12.9249 1.6665 15.0739 2.1461 16.4638 3.53592C17.8536 4.92573 18.3332 7.07476 18.3332 9.99984C18.3332 12.9249 17.8536 15.0739 16.4638 16.4638C15.0739 17.8536 12.9249 18.3332 9.99984 18.3332C7.07476 18.3332 4.92573 17.8536 3.53592 16.4638C2.1461 15.0739 1.6665 12.9249 1.6665 9.99984C1.6665 7.07476 2.1461 4.92573 3.53592 3.53592ZM4.4198 4.4198C3.40066 5.43894 2.9165 7.14409 2.9165 9.99984C2.9165 12.8556 3.40066 14.5607 4.4198 15.5799C5.43894 16.599 7.14409 17.0832 9.99984 17.0832C12.8556 17.0832 14.5607 16.599 15.5799 15.5799C16.599 14.5607 17.0832 12.8556 17.0832 9.99984C17.0832 7.14409 16.599 5.43894 15.5799 4.4198C14.5607 3.40066 12.8556 2.9165 9.99984 2.9165C7.14409 2.9165 5.43894 3.40066 4.4198 4.4198Z"
+          fill="${border}"
+        />
         </svg>
 
         <div class="task__text-warp">
@@ -263,6 +292,10 @@ $.getElementById("add-task-box-btn-open--input").addEventListener(
   () => {
     let taskTitle = $.querySelector("#add-task-box-title--input");
     let taskDscription = $.querySelector("#add-task-box-description--input");
+    let taskPriority = $.querySelector(
+      ".priority__submenu-item--active"
+    ).getAttribute("id");
+
     const newtask = {
       id: Date.now(),
       title: taskTitle.value,
@@ -270,7 +303,7 @@ $.getElementById("add-task-box-btn-open--input").addEventListener(
       completed: false,
       createdAt: -1, //Not Devlopment
       dueDate: -1, //Not Devlopment
-      priority: -1, //Not Devlopment
+      priority: taskPriority,
       tags: -1, //Not Devlopment
     };
     if (taskTitle.value) {

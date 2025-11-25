@@ -140,9 +140,16 @@
 .task__tick-Square-icon {
   cursor: pointer;
   background-color: #fff;
+  border-radius: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+}
+.task__tick-icon {
+  display: none;
+  transition: all 500ms ease;
 }
 .task__tick-Square-icon:hover .task__tick-icon {
-  fill: var(--color-neutral-800);
+  display: block;
 }
 .task__text-warp {
   display: flex;
@@ -170,9 +177,10 @@
 }
 .task__add {
   display: none;
-  align-items: center;
-  column-gap: 0.4rem;
-  padding: 0.4rem;
+  align-items: end;
+  column-gap: 0.8rem;
+  /* padding: 0.4rem; */
+  margin-right: 2.4rem;
   cursor: pointer;
 }
 .task__add-icon {
