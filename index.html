@@ -549,8 +549,8 @@
               id="hiddenDate"
               style="opacity: 0; position: absolute; pointer-events: none"
             />
-            <!-- <div class="priority">
-              <button class="add-task-box-option">
+            <div class="priority">
+              <button class="add-task-box-option" id="priority--btn">
                 <svg
                   class="add-task-box-option-icon"
                   width="24"
@@ -577,10 +577,10 @@
                     fill="currentcolor"
                   />
                 </svg>
-                اولویت
+                بدون اولویت
               </button>
               <div class="priority__submenu">
-                <button class="priority__submenu-item">
+                <button class="priority__submenu-item" id="priority-1">
                   <svg
                     class="priority__submenu-icon"
                     width="24"
@@ -609,7 +609,7 @@
                   </svg>
                   اولویت اول
                 </button>
-                <button class="priority__submenu-item">
+                <button class="priority__submenu-item" id="priority-2">
                   <svg
                     class="priority__submenu-icon"
                     width="24"
@@ -638,7 +638,7 @@
                   </svg>
                   اولویت دوم
                 </button>
-                <button class="priority__submenu-item">
+                <button class="priority__submenu-item" id="priority-3">
                   <svg
                     class="priority__submenu-icon"
                     width="24"
@@ -667,7 +667,10 @@
                   </svg>
                   اولویت سوم
                 </button>
-                <button class="priority__submenu-item">
+                <button
+                  class="priority__submenu-item priority__submenu-item--active"
+                  id="priority-4"
+                >
                   <svg
                     class="priority__submenu-icon"
                     width="24"
@@ -697,7 +700,7 @@
                   بدون اولویت
                 </button>
               </div>
-            </div> -->
+            </div>
 
             <button class="add-task-box-option" id="">
               <svg
@@ -812,7 +815,7 @@
           <!-- Tasks -->
           <div class="tasks"></div>
 
-          <!-- Add Task Task -->
+          <!-- Add Task -->
           <div class="task__add">
             <svg
               class="task__add-icon"
@@ -934,7 +937,7 @@
                 style="opacity: 0; position: absolute; pointer-events: none"
               />
               <div class="priority">
-                <button class="add-task-box-option" id="priority--btn">
+                <button class="add-task-box-option" id="priority--btn--input">
                   <svg
                     class="add-task-box-option-icon"
                     width="24"
@@ -961,9 +964,9 @@
                       fill="currentcolor"
                     />
                   </svg>
-                  بدوناولویت
+                  بدون اولویت
                 </button>
-                <div class="priority__submenu">
+                <div class="priority__submenu--input">
                   <button class="priority__submenu-item" id="priority-1">
                     <svg
                       class="priority__submenu-icon"

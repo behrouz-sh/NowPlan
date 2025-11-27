@@ -25,6 +25,9 @@ $.querySelector("#add_task").addEventListener("click", () => {
     "input__add-task-box--open"
   );
   $.querySelector(".add-task-box__layer").style.display = "block";
+  $.querySelector(".priority__submenu--input").classList.remove(
+    "priority__submenu--input--active"
+  );
 });
 
 $.querySelector(".add-task-box__layer").addEventListener("click", () => {
