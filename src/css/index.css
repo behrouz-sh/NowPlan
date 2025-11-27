@@ -2,6 +2,7 @@
 @import url(./variables.css);
 @import url(./base.css);
 @import url(../css/components/about-page.css);
+@import url(../css/components/jalalidatepicker.min.css);
 @import url(../css/components/add-task-box.css);
 
 .main {

@@ -107,6 +107,25 @@
   display: none;
   transition: opacity 2s ease;
 }
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+#pickDateBtn {
+  position: relative;
+}
+#hiddenDate {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/* ****************************************** */
 .priority {
   position: relative;
 }
