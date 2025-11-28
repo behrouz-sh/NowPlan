@@ -21,6 +21,11 @@ slidebarOpenBTN.addEventListener("click", () => {
 =============================================*/
 // --- Add Task ---
 $.querySelector("#add_task").addEventListener("click", () => {
+  if (!loadTasks().length) {
+    $.querySelector(".about-page").style.display = "none";
+    $.querySelector(".tasks").style.display = "block";
+    $.querySelector(".task__add").style.display = "flex";
+  }
   $.querySelector("#add-task-box").classList.toggle(
     "input__add-task-box--open"
   );

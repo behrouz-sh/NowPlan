@@ -114,10 +114,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   -webkit-appearance: none;
 }
 
-#pickDateBtn {
+.pickDateBtn {
   position: relative;
 }
-#hiddenDate {
+.hiddenDate {
   position: absolute;
   opacity: 0;
   top: 0;

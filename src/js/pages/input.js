@@ -56,20 +56,3 @@ $.querySelector(".task__add").addEventListener("click", () => {
   $.querySelector("#add-task-box--input").style.display = "block";
   renderAllTasks();
 });
-
-/*=============================================
-              Input Cansel** Task Box
-=============================================*/
-$.getElementById("add-task-box-btn-close--input").addEventListener(
-  "click",
-  () => {
-    if (loadTasks().length) {
-      $.querySelector("#add-task-box--input").style.display = "none";
-      $.querySelector(".task__add").style.display = "flex";
-    } else {
-      $.querySelector("#add-task-box--input").style.display = "none";
-      $.querySelector(".about-page").style.display = "block";
-      $.querySelector(".task__add").style.display = "none";
-    }
-  }
-);

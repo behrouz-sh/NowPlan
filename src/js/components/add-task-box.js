@@ -227,15 +227,32 @@ function renderAllTasks() {
 /*=============================================
                     Date
 =============================================*/
-const btn = document.getElementById("pickDateBtn");
-const dateInput = document.getElementById("hiddenDate");
-
 jalaliDatepicker.startWatch();
-btn.addEventListener("click", () => {});
+function restDate(hiddenInput) {
+  hiddenInput.value = "";
+}
+const pickBtn = document.getElementById("pickDateBtn");
 
-dateInput.addEventListener("change", () => {
-  console.log("تاریخ انتخاب شد:", dateInput.value);
-});
+// helper
+// const pad2 = (n) => (n < 10 ? "0" + n : n);
+
+// pickBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   jalaliDatepicker.show(hiddenInput);
+//   hiddenInput.focus();
+// });
+
+// وقتی تاریخ انتخاب میشه، مقدار input تغییر می‌کنه
+// hiddenInput.addEventListener("change", () => {
+// const val = hiddenInput.value; // مثل "1404/09/06"
+// اینا برای تبدیل به قمری هست
+// if (!val) return;
+// const [jy, jm, jd] = val.split("/").map(Number);
+// const g = jalaali.toGregorian(jy, jm, jd);
+// const iso = `${g.gy}-${pad2(g.gm)}-${pad2(g.gd)}`;
+// finalIso.value;
+// console.log(iso);
+// });
 
 /*=============================================
               Priority Item
@@ -262,7 +279,7 @@ function restPriority() {
   $.querySelectorAll("#priority-4").forEach((priority) => {
     priority.classList.add("priority__submenu-item--active");
   });
-  taskPriority.setAttribute("id", "priority-4");
+  // taskPriority.setAttribute("id", "priority-4");
 }
 
 function priorityItem(ID) {
@@ -308,12 +325,12 @@ toggleMenu(
   ".priority__submenu--input",
   "priority__submenu--input--active"
 );
-
 priorityItem("#priority-1");
 priorityItem("#priority-2");
 priorityItem("#priority-3");
 priorityItem("#priority-4");
 
+$.querySelector("priority__submenu--active");
 /*=============================================
               Input Add Task Box
 =============================================*/
@@ -321,12 +338,14 @@ function setupTaskBox(
   openBtnId,
   titleSelector,
   descSelector,
-  prioritySelector
+  prioritySelector,
+  date
 ) {
   $.getElementById(openBtnId).addEventListener("click", () => {
     const taskTitle = $.querySelector(titleSelector);
     const taskDescription = $.querySelector(descSelector);
     const taskPriority = $.querySelector(prioritySelector);
+    const hiddenInput = document.getElementById(date);
 
     const newtask = {
       id: Date.now(),
@@ -334,7 +353,7 @@ function setupTaskBox(
       description: taskDescription.value,
       completed: false,
       createdAt: -1,
-      dueDate: -1,
+      dueDate: hiddenInput.value,
       priority: taskPriority.getAttribute("id"),
       tags: -1,
     };
@@ -344,6 +363,7 @@ function setupTaskBox(
       taskTitle.value = "";
       taskDescription.value = "";
       restPriority();
+      restDate(hiddenInput);
     }
   });
 }
@@ -352,36 +372,39 @@ setupTaskBox(
   "add-task-box-btn-open",
   "#add-task-box-title",
   "#add-task-box-description",
-  ".priority__submenu-item--active"
+  ".priority__submenu-item--active",
+  "hiddenDate"
 );
 
 setupTaskBox(
   "add-task-box-btn-open--input",
   "#add-task-box-title--input",
   "#add-task-box-description--input",
-  ".priority__submenu-item--active"
+  ".priority__submenu-item--active",
+  "hiddenDate--input"
 );
 
 /*=============================================
               Input Cansel** Task Box
 =============================================*/
-$.getElementById("add-task-box-btn-close").addEventListener("click", () => {
-  $.querySelector(".add-task-box__layer").style.display = "none";
-  $.querySelector("#add-task-box").classList.toggle(
-    "input__add-task-box--open"
-  );
-});
-
-$.getElementById("add-task-box-btn-close--input").addEventListener(
-  "click",
-  () => {
-    if (loadTasks().length) {
-      $.querySelector("#add-task-box--input").style.display = "none";
-      $.querySelector(".task__add").style.display = "flex";
-    } else {
-      $.querySelector("#add-task-box--input").style.display = "none";
-      $.querySelector(".about-page").style.display = "block";
-      $.querySelector(".task__add").style.display = "none";
+function cancelTask(btn) {
+  $.getElementById(btn).addEventListener("click", () => {
+    if (btn == "add-task-box-btn-close") {
+      $.querySelector("#add-task-box").classList.remove(
+        "input__add-task-box--open"
+      );
+      $.querySelector(".add-task-box__layer").style.display = "none";
     }
-  }
-);
+    if (btn == "add-task-box-btn-close--input") {
+      $.querySelector("#add-task-box--input").style.display = "none";
+      if (!loadTasks().length) {
+        $.querySelector(".about-page").style.display = "block";
+        return;
+      }
+      $.querySelector(".task__add").style.display = "flex";
+    }
+  });
+}
+
+cancelTask("add-task-box-btn-close");
+cancelTask("add-task-box-btn-close--input");
