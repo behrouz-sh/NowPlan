@@ -229,7 +229,7 @@ jdp-container .jdp-day.today {
 }
 jdp-container .jdp-day-name.selected,
 jdp-container .jdp-day.selected {
-  background-color: #569ff7 !important;
+  background-color: #6c63ff !important;
   color: #fff !important;
   opacity: 1 !important;
 }

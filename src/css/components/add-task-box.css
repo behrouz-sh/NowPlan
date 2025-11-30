@@ -48,7 +48,8 @@
 .add-task-box-options-warp {
   display: flex;
   align-items: center;
-  column-gap: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
   position: relative;
   margin-bottom: 3.2rem;
 }
@@ -70,6 +71,21 @@
   column-gap: 0.8rem;
   color: var(--color-neutral-700);
   font-weight: 600;
+}
+.add-task-box-cansel-icon {
+  z-index: 50;
+  width: 24px;
+  height: 24px;
+  padding: 0.4rem;
+  fill: var(--color-neutral-700);
+  border-radius: 0.8rem;
+  transition: all 250ms ease;
+  cursor: pointer;
+}
+.add-task-box-cansel-icon:hover {
+  fill: var(--color-neutral-800);
+
+  background-color: var(--color-neutral-400);
 }
 
 .add-task-box-option-more {
@@ -119,7 +135,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .hiddenDate {
   position: absolute;
-  opacity: 0;
+  /* opacity: 0; */
   top: 0;
   right: 0;
   bottom: 0;
