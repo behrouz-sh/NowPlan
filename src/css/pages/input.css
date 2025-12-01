@@ -175,6 +175,20 @@
   background-color: var(--color-neutral-300);
   border-radius: 0.8rem;
 }
+.task-date__warp {
+  display: flex;
+  align-items: end;
+  column-gap: 0.2rem;
+}
+.task-date__icon {
+  width: 16px;
+  height: 16px;
+}
+.task-date__text {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
 .task__add {
   display: none;
   align-items: end;
