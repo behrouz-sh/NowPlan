@@ -7,6 +7,11 @@
 
 .main {
   transition: all 500ms ease;
+  height: 100vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: 4rem;
+  scrollbar-color: #b7bac4 transparent;
 }
 .main--open {
   margin-right: 48rem;

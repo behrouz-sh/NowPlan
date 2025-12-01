@@ -8,6 +8,10 @@
   position: fixed;
   z-index: 50;
   transition: width 2s ease;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: 4px;
+  scrollbar-color: #edeff3 transparent;
 }
 .sidebar--open {
   width: 48rem;

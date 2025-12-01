@@ -138,6 +138,8 @@ table {
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  height: 100%;
+  overflow: hidden;
 }
 body {
   font-size: 1.6rem;
