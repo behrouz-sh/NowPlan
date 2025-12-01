@@ -73,6 +73,7 @@
   font-weight: 600;
 }
 .add-task-box-cansel-icon {
+  display: none;
   z-index: 50;
   width: 24px;
   height: 24px;
@@ -83,7 +84,7 @@
   cursor: pointer;
 }
 .add-task-box-cansel-icon:hover {
-  fill: var(--color-neutral-800);
+  color: var(--color-neutral-800);
 
   background-color: var(--color-neutral-400);
 }
@@ -135,7 +136,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .hiddenDate {
   position: absolute;
-  /* opacity: 0; */
+  opacity: 0;
   top: 0;
   right: 0;
   bottom: 0;

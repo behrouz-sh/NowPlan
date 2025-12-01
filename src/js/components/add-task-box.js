@@ -230,129 +230,57 @@ function renderAllTasks() {
 jalaliDatepicker.startWatch({
   minDate: "attr",
 });
-// مطمئن شو $ وجود داره
+function showDayOrDate(arr) {
+  const d = new persianDate(arr);
+  const today = new persianDate();
 
-// قالب اولیه‌ی دکمه (حالت پیش‌فرض)
-const originalPickHTML = `
-  <svg class="add-task-box-option-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.30894 6.05983C4.08225 7.28641 3.49976 9.33854 3.49976 12.775C3.49976 16.2114 4.08225 18.2635 5.30894 19.4901C6.53564 20.7167 8.58779 21.299 12.0238 21.299C15.4602 21.299 17.5126 20.7167 18.7395 19.4901C19.9663 18.2635 20.5488 16.2114 20.5488 12.775C20.5488 9.33854 19.9663 7.28643 18.7395 6.05985C17.5126 4.83324 15.4602 4.25098 12.0238 4.25098C8.58779 4.25098 6.53564 4.83323 5.30894 6.05983ZM4.24832 4.99912C5.91987 3.32772 8.50472 2.75098 12.0238 2.75098C15.5433 2.75098 18.1284 3.32771 19.8 4.9991C21.4718 6.67052 22.0488 9.25541 22.0488 12.775C22.0488 16.2945 21.4718 18.8794 19.8 20.5509C18.1284 22.2222 15.5433 22.799 12.0238 22.799C8.50472 22.799 5.91987 22.2222 4.24832 20.5508C2.57676 18.8794 1.99976 16.2945 1.99976 12.775C1.99976 9.25541 2.57676 6.67054 4.24832 4.99912Z" fill="currentcolor"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.27515 9.32324C2.27515 8.90903 2.61093 8.57324 3.02515 8.57324H21.0331C21.4474 8.57324 21.7831 8.90903 21.7831 9.32324C21.7831 9.73746 21.4474 10.0732 21.0331 10.0732H3.02515C2.61093 10.0732 2.27515 9.73746 2.27515 9.32324Z" fill="currentcolor"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6785 13.2607C15.6785 12.8465 16.0143 12.5107 16.4285 12.5107H16.4375C16.8517 12.5107 17.1875 12.8465 17.1875 13.2607C17.1875 13.675 16.8517 14.0107 16.4375 14.0107H16.4285C16.0143 14.0107 15.6785 13.675 15.6785 13.2607Z" fill="currentcolor"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.2791 13.2607C11.2791 12.8465 11.6148 12.5107 12.0291 12.5107H12.0381C12.4523 12.5107 12.7881 12.8465 12.7881 13.2607C12.7881 13.675 12.4523 14.0107 12.0381 14.0107H12.0291C11.6148 14.0107 11.2791 13.675 11.2791 13.2607Z" fill="currentcolor"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.87134 13.2607C6.87134 12.8465 7.20712 12.5107 7.62134 12.5107H7.63034C8.04455 12.5107 8.38034 12.8465 8.38034 13.2607C8.38034 13.675 8.04455 14.0107 7.63034 14.0107H7.62134C7.20712 14.0107 6.87134 13.675 6.87134 13.2607Z" fill="currentcolor"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6785 17.1123C15.6785 16.6981 16.0143 16.3623 16.4285 16.3623H16.4375C16.8517 16.3623 17.1875 16.6981 17.1875 17.1123C17.1875 17.5265 16.8517 17.8623 16.4375 17.8623H16.4285C16.0143 17.8623 15.6785 17.5265 15.6785 17.1123Z" fill="currentcolor"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.2791 17.1123C11.2791 16.6981 11.6148 16.3623 12.0291 16.3623H12.0381C12.4523 16.3623 12.7881 16.6981 12.7881 17.1123C12.7881 17.5265 12.4523 17.8623 12.0381 17.8623H12.0291C11.6148 17.8623 11.2791 17.5265 11.2791 17.1123Z" fill="currentcolor"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.87134 17.1123C6.87134 16.6981 7.20712 16.3623 7.62134 16.3623H7.63034C8.04455 16.3623 8.38034 16.6981 8.38034 17.1123C8.38034 17.5265 8.04455 17.8623 7.63034 17.8623H7.62134C7.20712 17.8623 6.87134 17.5265 6.87134 17.1123Z" fill="currentcolor"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.033 1.2998C16.4472 1.2998 16.783 1.63559 16.783 2.0498V5.3118C16.783 5.72602 16.4472 6.0618 16.033 6.0618C15.6187 6.0618 15.283 5.72602 15.283 5.3118V2.0498C15.283 1.63559 15.6187 1.2998 16.033 1.2998Z" fill="currentcolor"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.02466 1.2998C8.43887 1.2998 8.77466 1.63559 8.77466 2.0498V5.3118C8.77466 5.72602 8.43887 6.0618 8.02466 6.0618C7.61044 6.0618 7.27466 5.72602 7.27466 5.3118V2.0498C7.27466 1.63559 7.61044 1.2998 8.02466 1.2998Z" fill="currentcolor"></path>
-  </svg>
-  تاریخ
-  <input class="hiddenDate" id="hiddenDate--input" type="text" data-jdp="" data-jdp-min-date="today" placeholder="نمایش تاریخ از امروز" autocomplete="off">
-  <input type="hidden" id="finalIsoDate--input">
-`;
+  // امروز بودن
+  const isToday =
+    d.year() === today.year() &&
+    d.month() === today.month() &&
+    d.date() === today.date();
 
-// اطمینان از وجود container
-const pickBtn = $.querySelector("#pickDateBtn--input");
-if (!pickBtn) throw new Error("عنصر #pickDateBtn--input یافت نشد");
-
-// helper: رندر حالت انتخاب‌شده با متن displayDate
-function renderPicked(displayDate, selectedDateObj) {
-  pickBtn.innerHTML = `
-    <svg class="add-task-box-option-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.30894 6.05983C4.08225 7.28641 3.49976 9.33854 3.49976 12.775C3.49976 16.2114 4.08225 18.2635 5.30894 19.4901C6.53564 20.7167 8.58779 21.299 12.0238 21.299C15.4602 21.299 17.5126 20.7167 18.7395 19.4901C19.9663 18.2635 20.5488 16.2114 20.5488 12.775C20.5488 9.33854 19.9663 7.28643 18.7395 6.05985C17.5126 4.83324 15.4602 4.25098 12.0238 4.25098C8.58779 4.25098 6.53564 4.83323 5.30894 6.05983ZM4.24832 4.99912C5.91987 3.32772 8.50472 2.75098 12.0238 2.75098C15.5433 2.75098 18.1284 3.32771 19.8 4.9991C21.4718 6.67052 22.0488 9.25541 22.0488 12.775C22.0488 16.2945 21.4718 18.8794 19.8 20.5509C18.1284 22.2222 15.5433 22.799 12.0238 22.799C8.50472 22.799 5.91987 22.2222 4.24832 20.5508C2.57676 18.8794 1.99976 16.2945 1.99976 12.775C1.99976 9.25541 2.57676 6.67054 4.24832 4.99912Z" fill="currentcolor"></path>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.27515 9.32324C2.27515 8.90903 2.61093 8.57324 3.02515 8.57324H21.0331C21.4474 8.57324 21.7831 8.90903 21.7831 9.32324C21.7831 9.73746 21.4474 10.0732 21.0331 10.0732H3.02515C2.61093 10.0732 2.27515 9.73746 2.27515 9.32324Z" fill="currentcolor"></path>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6785 13.2607C15.6785 12.8465 16.0143 12.5107 16.4285 12.5107H16.4375C16.8517 12.5107 17.1875 12.8465 17.1875 13.2607C17.1875 13.675 16.8517 14.0107 16.4375 14.0107H16.4285C16.0143 14.0107 15.6785 13.675 15.6785 13.2607Z" fill="currentcolor"></path>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.2791 13.2607C11.2791 12.8465 11.6148 12.5107 12.0291 12.5107H12.0381C12.4523 12.5107 12.7881 12.8465 12.7881 13.2607C12.7881 13.675 12.4523 14.0107 12.0381 14.0107H12.0291C11.6148 14.0107 11.2791 13.675 11.2791 13.2607Z" fill="currentcolor"></path>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.87134 13.2607C6.87134 12.8465 7.20712 12.5107 7.62134 12.5107H7.63034C8.04455 12.5107 8.38034 12.8465 8.38034 13.2607C8.38034 13.675 8.04455 14.0107 7.63034 14.0107H7.62134C7.20712 14.0107 6.87134 13.675 6.87134 13.2607Z" fill="currentcolor"></path>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6785 17.1123C15.6785 16.6981 16.0143 16.3623 16.4285 16.3623H16.4375C16.8517 16.3623 17.1875 16.6981 17.1875 17.1123C17.1875 17.5265 16.8517 17.8623 16.4375 17.8623H16.4285C16.0143 17.8623 15.6785 17.5265 15.6785 17.1123Z" fill="currentcolor"></path>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.2791 17.1123C11.2791 16.6981 11.6148 16.3623 12.0291 16.3623H12.0381C12.4523 16.3623 12.7881 16.6981 12.7881 17.1123C12.7881 17.5265 12.4523 17.8623 12.0381 17.8623H12.0291C11.6148 17.8623 11.2791 17.5265 11.2791 17.1123Z" fill="currentcolor"></path>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.87134 17.1123C6.87134 16.6981 7.20712 16.3623 7.62134 16.3623H7.63034C8.04455 16.3623 8.38034 16.6981 8.38034 17.1123C8.38034 17.5265 8.04455 17.8623 7.63034 17.8623H7.62134C7.20712 17.8623 6.87134 17.5265 6.87134 17.1123Z" fill="currentcolor"></path>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.033 1.2998C16.4472 1.2998 16.783 1.63559 16.783 2.0498V5.3118C16.783 5.72602 16.4472 6.0618 16.033 6.0618C15.6187 6.0618 15.283 5.72602 15.283 5.3118V2.0498C15.283 1.63559 15.6187 1.2998 16.033 1.2998Z" fill="currentcolor"></path>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.02466 1.2998C8.43887 1.2998 8.77466 1.63559 8.77466 2.0498V5.3118C8.77466 5.72602 8.43887 6.0618 8.02466 6.0618C7.61044 6.0618 7.27466 5.72602 7.27466 5.3118V2.0498C7.27466 1.63559 7.61044 1.2998 8.02466 1.2998Z" fill="currentcolor"></path>
-      </svg>
-    ${displayDate}
-    <svg class="add-task-box-cansel-icon" id="add-task-box-cansel-icon--input" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
-      <path d="M 12 2 C 6.4889971 2 2 6.4889971 2 12 C 2 17.511003 6.4889971 22 12 22 C 17.511003 22 22 17.511003 22 12 C 22 6.4889971 17.511003 2 12 2 z M 12 4 C 16.430123 4 20 7.5698774 20 12 C 20 16.430123 16.430123 20 12 20 C 7.5698774 20 4 16.430123 4 12 C 4 7.5698774 7.5698774 4 12 4 z M 8.7070312 7.2929688 L 7.2929688 8.7070312 L 10.585938 12 L 7.2929688 15.292969 L 8.7070312 16.707031 L 12 13.414062 L 15.292969 16.707031 L 16.707031 15.292969 L 13.414062 12 L 16.707031 8.7070312 L 15.292969 7.2929688 L 12 10.585938 L 8.7070312 7.2929688 z"></path>
-    </svg>
-  <input class="hiddenDate" id="hiddenDate--input" type="text" data-jdp="" data-jdp-min-date="today" placeholder="نمایش تاریخ از امروز" autocomplete="off">
-  <input type="hidden" id="finalIsoDate--input">
-
-    
-  `;
-  pickBtn.style.background = "#edeff3";
-
-  // در صورت نیاز لاگ گرفتن
-  if (selectedDateObj && typeof selectedDateObj.format === "function") {
-    console.log("Persian Date:", selectedDateObj.format("YYYY/MM/DD"));
+  if (isToday) {
+    return "امروز";
   }
+
+  // اختلاف روز برای تشخیص هفته
+  const diff = d.diff(today, "day");
+
+  if (Math.abs(diff) < 7) {
+    return d.format("dddd"); // شنبه، یکشنبه، ...
+  }
+
+  // خارج هفته → فرمت دلخواه: "25 بهمن 1404"
+  return d.format("D MMMM YYYY");
+}
+function updateDateDisplay(tarikh) {
+  const displayEl = document.querySelector("#pickDateBtn--input span"); // فرض می‌کنیم یه span داخلش داری
+  displayEl.textContent = showDayOrDate(tarikh);
 }
 
-// event delegation برای change روی input تاریخ — اینطوری حتی با بازساختن innerHTML هم کار می‌کنه
-document.addEventListener("change", (e) => {
-  if (e.target && e.target.id === "hiddenDate--input") {
-    const dateInput = e.target;
-    const val = dateInput.value || "";
-    if (!val) return;
-
-    const darr = val.split("/");
-    const year = parseInt(darr[0], 10);
-    const month = parseInt(darr[1], 10);
-    const day = parseInt(darr[2], 10);
-
-    // ساختن selectedDate با persianDate (تو کد شما هست)
-    const selectedDate = new persianDate().year(year).month(month).date(day);
-    const today = new persianDate();
-
-    // محاسبات هفته
-    const dayOfWeek = today.day();
-    const weekStart = today.clone().subtract(dayOfWeek, "day");
-    const weekEnd = weekStart.clone().add(6, "day");
-
-    let displayDate = "";
-    if (selectedDate.format("YYYY/MM/DD") === today.format("YYYY/MM/DD")) {
-      displayDate = "امروز";
-    } else if (
-      selectedDate.valueOf() >= weekStart.valueOf() &&
-      selectedDate.valueOf() <= weekEnd.valueOf()
-    ) {
-      displayDate = selectedDate.format("dddd");
-    } else {
-      displayDate = selectedDate.format("D MMMM YYYY");
-    }
-
-    // رندر حالت انتخاب شده
-    renderPicked(displayDate, selectedDate);
-
-    // اگر لازم دارید ISO یا چیز دیگه‌ای ذخیره کنید:
-    const isoHidden = document.getElementById("finalIsoDate--input");
-    if (isoHidden)
-      isoHidden.value = selectedDate.toISOString
-        ? selectedDate.toISOString()
-        : "";
-  }
+// event listener
+const inputDate = document.querySelector("#hiddenDate--input");
+inputDate.addEventListener("change", () => {
+  const dateArr = inputDate.value.split("/");
+  const year = Number(dateArr[0]);
+  const mon = Number(dateArr[1]);
+  const day = Number(dateArr[2]);
+  const tarikh = new persianDate([year, mon, day]);
+  updateDateDisplay(tarikh);
+  $.querySelector('.add-task-box-cansel-icon').style.display = 'block'
 });
-
-// event delegation برای کلیک کنسل — بدون null error حتی وقتی آیکون بعداً اضافه شود
-document.addEventListener("click", (e) => {
-  const cancelBtn = e.target.closest
-    ? e.target.closest("#add-task-box-cansel-icon--input")
-    : null;
-  if (cancelBtn) {
-    // 1) ریست مقادیر ورودی‌ها
-    const hidden = document.getElementById("hiddenDate--input");
-    if (hidden) hidden.value = "";
-
-    const finalIso = document.getElementById("finalIsoDate--input");
-    if (finalIso) finalIso.value = "";
-
-    // 2) بازگرداندن HTML دکمه به حالت اولیه
-    pickBtn.innerHTML = originalPickHTML;
-    pickBtn.style.background = ""; // یا هر رنگ اولیه‌ای که می‌خوای
-  }
-});
+$.querySelector('.add-task-box-cansel-icon').addEventListener('click',()=>{
+  $.querySelector('.add-task-box-cansel-icon').style.display = 'none'
+  inputDate.value='';
+  document.querySelector(".pickDateBtn__text").textContent ='تاریخ';
+})
 
 function restDate(hiddenInput) {
   hiddenInput.value = "";
+  $.querySelector('.add-task-box-cansel-icon').style.display = 'none'
+  document.querySelector(".pickDateBtn__text").textContent ='تاریخ';
+
 }
 
 /*=============================================
