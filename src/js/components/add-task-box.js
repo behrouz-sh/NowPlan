@@ -1,3 +1,67 @@
+const tasks = [
+  "چک کردن ایمیل‌های مهم",
+  "نوشتن گزارش پروژه",
+  "جلسه آنلاین با تیم",
+  "مرور تقویم روزانه",
+  "برنامه‌ریزی برای هفته آینده",
+  "مرتب کردن میز کار",
+  "نوشتن یادداشت‌های مهم",
+  "تمرین ۲۰ دقیقه‌ای یوگا",
+  "خواندن فصل بعدی کتاب",
+  "آماده کردن وعده غذایی سالم",
+  "پیاده‌روی کوتاه بعد از ناهار",
+  "تماس با دوست یا خانواده",
+  "به‌روزرسانی لیست خرید",
+  "بررسی شبکه‌های اجتماعی",
+  "تنظیم آلارم یا یادآور",
+  "مرور و پاکسازی فایل‌های کامپیوتر",
+  "تمرین مهارت جدید (کدنویسی، زبان، طراحی)",
+  "نوشتن ایده‌های خلاقانه",
+  "استراحت کوتاه و تمرین تنفس",
+  "مرور اهداف روز و هفته",
+];
+
+const input = document.getElementById("add-task-box-title--input");
+const inputBox = document.getElementById("add-task-box-title");
+
+function typePlaceholder(text, callback, inputEl) {
+  let i = 0;
+  inputEl.placeholder = "";
+  const interval = setInterval(() => {
+    inputEl.placeholder += text[i];
+    i++;
+    if (i >= text.length) {
+      clearInterval(interval);
+      if (callback) callback();
+    }
+  }, 72);
+}
+
+function changePlaceholder() {
+  const task = tasks[Math.floor(Math.random() * tasks.length)];
+  typePlaceholder(
+    task,
+    () => {
+      setTimeout(changePlaceholder, 2500);
+    },
+    input
+  );
+}
+
+function changePlaceholderBox() {
+  const task = tasks[Math.floor(Math.random() * tasks.length)];
+  typePlaceholder(
+    task,
+    () => {
+      setTimeout(changePlaceholderBox, 2500);
+    },
+    inputBox
+  );
+}
+
+changePlaceholder();
+changePlaceholderBox();
+
 /*=============================================
                Task Add Function
 =============================================*/
