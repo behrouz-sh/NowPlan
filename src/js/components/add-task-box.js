@@ -92,12 +92,12 @@ function addTaskToDOM(task) {
       break;
   }
 
-  let color = "";
+  let color = "#4d4d4d";
   function showDayOrDateTask(str) {
-    arr = str.split("/");
-    year = Number(arr[0]);
-    mon = Number(arr[1]);
-    day = Number(arr[2]);
+    const arr = str.split("/");
+    const year = Number(arr[0]);
+    const mon = Number(arr[1]);
+    const day = Number(arr[2]);
     const d = new persianDate([year, mon, day]);
     const today = new persianDate();
     const isToday =
@@ -109,19 +109,18 @@ function addTaskToDOM(task) {
       d.month() === today.month() &&
       d.date() === today.date() + 1;
     if (isToday) {
-      color = "#22c55e";
+      color = "#0c9900";
       return "امروز";
     }
     if (isTomorrow) {
-      color = "#22c55e";
+      color = "#0c9900";
       return "فردا";
     }
     const diff = d.diff(today, "day");
     if (Math.abs(diff) < 7) {
-      color = "#facc15";
+      color = "#007c99";
       return d.format("dddd");
     }
-    color = "#b7bac4";
     return d.format("D MMMM YYYY");
   }
   const taskHTML = `<div class="task" data-task-id="${task.id}">
@@ -164,7 +163,7 @@ function addTaskToDOM(task) {
                   ${
                     showDayOrDateTask(task.dueDate) !== "۱ فروردین ۰"
                       ? `
-                      <div class="task-date__warp ">
+                      <div class="task-date__warp" style="color: ${color};">
                       <svg
                         class="task-date__icon handle"
                         width="24"
@@ -383,7 +382,8 @@ function addTaskToDOM(task) {
                 </svg>
               </div>
             </div>`;
-  $.querySelector(".tasks").innerHTML += taskHTML;
+  $.querySelector(".tasks").innerHTML =
+    $.querySelector(".tasks").innerHTML + taskHTML;
 }
 function addNewTasks(task) {
   const todoTasks = loadTasks();
@@ -576,7 +576,7 @@ function setupTaskBox(
       title: taskTitle.value,
       description: taskDescription.value,
       completed: false,
-      createdAt: -1,
+      createdAt: Date.now(),
       dueDate: hiddenInput.value,
       priority: taskPriority.getAttribute("id"),
       tags: -1,
@@ -618,6 +618,10 @@ function cancelTask(btn) {
         "input__add-task-box--open"
       );
       $.querySelector(".add-task-box__layer").style.display = "none";
+      // rest
+      restDate($.getElementById("hiddenDate"));
+      $.querySelector("#add-task-box-title").value = "";
+      $.querySelector("#add-task-box-description").value = "";
     }
     if (btn == "add-task-box-btn-close--input") {
       $.querySelector("#add-task-box--input").style.display = "none";
@@ -626,6 +630,11 @@ function cancelTask(btn) {
         return;
       }
       $.querySelector(".task__add").style.display = "flex";
+      // rest
+      restPriority();
+      restDate($.getElementById("hiddenDate--input"));
+      $.querySelector("#add-task-box-title--input").value = "";
+      $.querySelector("#add-task-box-description--input").value = "";
     }
   });
 }

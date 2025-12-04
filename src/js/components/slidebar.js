@@ -26,6 +26,7 @@ $.querySelector("#add_task").addEventListener("click", () => {
   $.querySelector(".priority__submenu--input").classList.remove(
     "priority__submenu--input--active"
   );
+  restPriority();
 });
 
 $.querySelector(".add-task-box__layer").addEventListener("click", () => {
