@@ -1,0 +1,112 @@
+.search__warp {
+}
+.search-box {
+  padding: 24px;
+  border: 2px solid var(--color-neutral-400);
+  border-radius: 3.2rem;
+  position: absolute;
+  z-index: 100;
+  background: #fff;
+  width: 92rem;
+  max-height: 48rem;
+  inset: 0;
+  margin: auto;
+  display: none;
+}
+.search-box--open {
+  display: block;
+}
+.search-box__input-warp {
+  width: 100%;
+  height: 4.8rem;
+  border-radius: 1.6rem;
+  border: 1px solid var(--color-neutral-400);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.6rem;
+}
+.search-box__input {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0 1.2rem;
+  font-size: var(--font-size-xl);
+  color: var(--color-neutral-800);
+}
+.search-box__icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 12px;
+  width: 22px;
+  height: auto;
+  color: var(--color-neutral-700);
+}
+
+.search-box-layer {
+  content: " ";
+  width: 100vw;
+  height: 100vh;
+  inset: 0;
+  background-color: rgba(107, 114, 128, 0.5);
+  backdrop-filter: blur(0.8rem);
+  position: fixed;
+  z-index: 90;
+  display: none;
+  transition: opacity 2s ease;
+}
+.search-box__task-warp {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: 4px;
+  scrollbar-color: #edeff3 transparent;
+  height: calc(100% - 70px);
+}
+.search-box__status {
+  font-size: 2.2rem;
+  text-align: center;
+  color: var(--color-neutral-600);
+  font-weight: 600;
+  display: block;
+  margin-top: 14rem;
+  user-select: none;
+}
+.search-box__task {
+  border: 1px solid var(--color-neutral-500);
+  border-radius: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6.4rem;
+  padding: 0 1.2rem;
+  color: var(--color-neutral-800);
+  user-select: none;
+  margin-bottom: 1.2rem;
+  transition: all 80ms ease;
+}
+.search-box__task--not-finished:hover {
+  background-color: var(--color-neutral-300);
+}
+.search-box__task--complated {
+  background-color: var(--color-neutral-200);
+}
+.search-box__task-text-warp {
+  display: flex;
+  flex-direction: column;
+}
+.search-box__task-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.search-box__task-description {
+  font-size: 1.2rem;
+}
+.search-box__task-completed {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--color-neutral-700);
+}
+.hide {
+  display: none;
+}

@@ -63,7 +63,7 @@ $.querySelector("#complated").addEventListener("click", () => {
 /*=============================================
               Feature Unenabel
 =============================================*/
-const idUnenabel = ["search", "today", "tasks", "filter-label", "profile"];
+const idUnenabel = ["today", "tasks", "filter-label", "profile"];
 idUnenabel.forEach((id) => {
   $.getElementById(id).addEventListener("click", () => {
     $.querySelector(".pagenone").style.display = "flex";

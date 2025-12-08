@@ -416,7 +416,6 @@ function showDayOrDate(arr) {
   const d = new persianDate(arr);
   const today = new persianDate();
 
-  // امروز بودن
   const isToday =
     d.year() === today.year() &&
     d.month() === today.month() &&
@@ -426,14 +425,11 @@ function showDayOrDate(arr) {
     return "امروز";
   }
 
-  // اختلاف روز برای تشخیص هفته
   const diff = d.diff(today, "day");
 
   if (Math.abs(diff) < 7) {
-    return d.format("dddd"); // شنبه، یکشنبه، ...
+    return d.format("dddd");
   }
-
-  // خارج هفته → فرمت دلخواه: "25 بهمن 1404"
   return d.format("D MMMM YYYY");
 }
 
@@ -503,7 +499,6 @@ function restPriority() {
   $.querySelectorAll("#priority-4").forEach((priority) => {
     priority.classList.add("priority__submenu-item--active");
   });
-  // taskPriority.setAttribute("id", "priority-4");
 }
 
 function priorityItem(ID) {
