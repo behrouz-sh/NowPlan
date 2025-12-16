@@ -1,16 +1,18 @@
+const slidebarOpenBTN = $.querySelector(".sidebar__open-btn-icon");
+const slidebarCloseBTN = $.querySelector(".sidebar__close-btn-icon");
 /*=============================================
               Open-Close Sidebar
 =============================================*/
-let slidebarOpenBTN = $.querySelector(".sidebar__open-btn-icon");
-let slidebarCloseBTN = $.querySelector(".sidebar__close-btn-icon");
-let openCloseSlidebar = function () {
+const openCloseSlidebar = function () {
   $.querySelector(".main").classList.toggle("main--open");
   $.querySelector(".sidebar").classList.toggle("sidebar--open");
 };
+
 slidebarCloseBTN.addEventListener("click", () => {
   openCloseSlidebar();
   slidebarOpenBTN.style.display = "block";
 });
+
 slidebarOpenBTN.addEventListener("click", () => {
   openCloseSlidebar();
   slidebarOpenBTN.style.display = "none";
@@ -19,52 +21,82 @@ slidebarOpenBTN.addEventListener("click", () => {
 /*=============================================
                 Sidebar List
 =============================================*/
-// --- Add Task ---
-$.querySelector("#add_task").addEventListener("click", () => {
-  $.querySelector("#add-task-box").classList.add("input__add-task-box--open");
-  $.querySelector(".add-task-box__layer").style.display = "block";
-  $.querySelector(".priority__submenu--input").classList.remove(
-    "priority__submenu--input--active"
+const titleSection = $.querySelector(".title-section");
+
+const sidebarListLinkActive = function (active) {
+  const sidebarListLink = [
+    sidebarListAddInputBTN,
+    sidebarListAddTodayBTN,
+    sidebarListAddCompletedBTN,
+  ];
+  for (let i = 0; i < sidebarListLink.length; i++) {
+    sidebarListLink[i].classList.remove("sidebar__list-link--active");
+  }
+  active.classList.add("sidebar__list-link--active");
+};
+
+const sectionActive = function (active) {
+  const sectionActive = ["input-section", "today-section", "completed-section"];
+  for (let i = 0; i < sectionActive.length; i++) {
+    $.getElementById(sectionActive[i]).style.display = "none";
+  }
+
+  // active
+  $.getElementById(active).style.display = "block";
+};
+
+// --- ADD TASK ----------------------------------------------------------------
+const sidebarListAddTaskBTN = $.getElementById("sidebar-list__add-task");
+const slidebarAddTaskBoxWarp = document.querySelector(".add-task-box__warp");
+sidebarListAddTaskBTN.addEventListener("click", () => {
+  slidebarAddTaskBoxWarp.classList.add("add-task-box__warp--open");
+  $.getElementById("slidebar-add-task-box__bg").addEventListener(
+    "click",
+    () => {
+      slidebarAddTaskBoxWarp.classList.remove("add-task-box__warp--open");
+    }
   );
-  restPriority();
+  restTaskBox(slidebarAddTaskBox);
 });
 
-$.querySelector(".add-task-box__layer").addEventListener("click", () => {
-  $.querySelector(".add-task-box__layer").style.display = "none";
-  $.querySelector("#add-task-box").classList.toggle(
-    "input__add-task-box--open"
-  );
+// --- INPUT ------------------------------------------------------------------
+const sidebarListAddInputBTN = $.getElementById("sidebar-list__inputs");
+sidebarListAddInputBTN.addEventListener("click", () => {
+  titleSection.textContent = "ورودی ها";
+  sidebarListLinkActive(sidebarListAddInputBTN);
+  sectionActive("input-section");
 });
 
-// --- Input ---
-$.querySelector("#inputs").addEventListener("click", () => {
-  $.querySelector(".input").style.display = "block";
-  $.querySelector(".complated").style.display = "none";
-  $.querySelector(".sidebar__list-link--active").classList.remove(
-    "sidebar__list-link--active"
-  );
-  $.querySelector("#inputs").classList.add("sidebar__list-link--active");
+// --- TODAY ------------------------------------------------------------------
+const sidebarListAddTodayBTN = $.getElementById("sidebar-list__today");
+sidebarListAddTodayBTN.addEventListener("click", () => {
+  titleSection.textContent = `کار های امروز | ${todayDate.format(
+    "dddd (DD MMMM  YYYY)"
+  )}`;
+  sidebarListLinkActive(sidebarListAddTodayBTN);
+  sectionActive("today-section");
 
-  $.querySelector(".title-section").textContent = "ورودی ها";
+  renderAllTasksToday();
+  todayTaskAddBTN.style.display = "flex";
 });
-
-// --- Complated ---
-$.querySelector("#complated").addEventListener("click", () => {
-  $.querySelector(".complated").style.display = "block";
-  $.querySelector(".input").style.display = "none";
-  $.querySelector(".sidebar__list-link--active").classList.remove(
-    "sidebar__list-link--active"
-  );
-  $.querySelector("#complated").classList.add("sidebar__list-link--active");
-
-  $.querySelector(".title-section").textContent = "انجام‌شده ها";
+// --- COMPLETED  -------------------------------------------------------------
+const sidebarListAddCompletedBTN = $.getElementById("sidebar-list__completed");
+sidebarListAddCompletedBTN.addEventListener("click", () => {
+  titleSection.textContent = "انجام‌شده ها";
+  sidebarListLinkActive(sidebarListAddCompletedBTN);
+  sectionActive("completed-section");
+  if (loadCompleted().length) {
+    $.getElementById("completed-about-page").style.display = "none";
+    $.getElementById("completed-task-container").style.display = "flex";
+    renderAllTasksCompleted();
+  }
 });
 
 /*=============================================
-              Feature Unenabel
+              Feature Unenable
 =============================================*/
-const idUnenabel = ["today", "tasks", "filter-label", "profile"];
-idUnenabel.forEach((id) => {
+const idUnenable = ["tasks", "filter-label", "profile"];
+idUnenable.forEach((id) => {
   $.getElementById(id).addEventListener("click", () => {
     $.querySelector(".pagenone").style.display = "flex";
     $.querySelector(".pagenone__layer").style.display = "block";

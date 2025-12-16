@@ -46,7 +46,9 @@
     width: 80vw;
   }
   .sidebar__open-btn-icon {
-    right: 26px;
+    right: 12px;
+    z-index: 50;
+    top: 12px;
   }
 }
 

@@ -7,7 +7,7 @@
   position: absolute;
   z-index: 100;
   background: #fff;
-  width: 92rem;
+  max-width: 92rem;
   max-height: 48rem;
   inset: 0;
   margin: auto;
@@ -44,17 +44,8 @@
   color: var(--color-neutral-700);
 }
 
-.search-box-layer {
-  content: " ";
-  width: 100vw;
-  height: 100vh;
-  inset: 0;
-  background-color: rgba(107, 114, 128, 0.5);
-  backdrop-filter: blur(0.8rem);
-  position: fixed;
-  z-index: 90;
+#search-box-layer {
   display: none;
-  transition: opacity 2s ease;
 }
 .search-box__task-warp {
   overflow-y: auto;

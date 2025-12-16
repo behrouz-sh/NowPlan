@@ -1,19 +1,24 @@
-.add-task-box {
-  padding: 24px;
-  border: 2px solid var(--color-neutral-400);
-  border-radius: 3.2rem;
-
+.add-task-box__warp {
   display: none;
 }
-.add-task-box--open {
-  display: block !important;
+.add-task-box__warp--open {
+  display: block;
+}
+#slidebar-add-task-box {
+  display: block;
   position: absolute;
   z-index: 100;
   background: #fff;
-  width: 92rem;
+  max-width: 92rem;
   height: fit-content;
   inset: 0;
   margin: auto;
+}
+.add-task-box {
+  display: none;
+  padding: 24px;
+  border-radius: 3.2rem;
+  border: 2px solid var(--color-neutral-400);
 }
 .add-task-box-abs--active {
   position: absolute;
@@ -69,7 +74,7 @@
   color: var(--color-neutral-700);
   font-weight: 600;
 }
-.add-task-box-cansel-icon {
+.add-task-box-cancel-icon {
   display: none;
   z-index: 50;
   width: 24px;
@@ -80,7 +85,7 @@
   transition: all 250ms ease;
   cursor: pointer;
 }
-.add-task-box-cansel-icon:hover {
+.add-task-box-cancel-icon:hover {
   color: var(--color-neutral-800);
 
   background-color: var(--color-neutral-400);
@@ -109,16 +114,16 @@
 .add-task-box-btn {
 }
 
-.add-task-box__layer {
+.bg-layer {
   content: " ";
   width: 100vw;
   height: 100vh;
   inset: 0;
-  background-color: rgba(107, 114, 128, 0.5);
-  backdrop-filter: blur(0.8rem);
+  background-color: rgba(107, 114, 128, 0.4);
+  backdrop-filter: blur(0.4rem);
   position: fixed;
   z-index: 99;
-  display: none;
+  display: block;
   transition: opacity 2s ease;
 }
 
@@ -143,8 +148,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .priority {
   position: relative;
 }
-.priority__submenu,
-.priority__submenu--input {
+.priority__submenu {
   display: none;
   flex-direction: column;
   position: absolute;
@@ -157,8 +161,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: 1px solid var(--color-neutral-500);
   transition: all s ease;
 }
-.priority__submenu--active,
-.priority__submenu--input--active {
+.priority__submenu--active {
   display: flex;
 }
 .priority__submenu-item {

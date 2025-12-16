@@ -17,6 +17,7 @@
   margin-right: 48rem;
 }
 .title-section {
+  z-index: 49;
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-medium);
   text-align: center;
@@ -55,8 +56,8 @@
   width: 100vw;
   height: 100vh;
   inset: 0;
-  background-color: rgba(107, 114, 128, 0.5);
-  backdrop-filter: blur(0.8rem);
+  background-color: rgba(107, 114, 128, 0.2);
+  backdrop-filter: blur(0.4rem);
   position: fixed;
   z-index: 99;
   display: none;
@@ -85,7 +86,3 @@
   transition: all 500ms ease;
   background-color: var(--color-neutral-500);
 }
-
-/*=======================================
-              Box Add Task
-=======================================*/

@@ -1,5 +1,5 @@
 const searchBtn = document.getElementById("search");
-const searchLayer = document.querySelector(".search-box-layer");
+const searchLayer = document.getElementById("search-box-layer");
 const searchBox = document.querySelector(".search-box");
 const searchInput = document.querySelector(".search-box__input");
 const searchTaskWarp = document.querySelector(".search-box__task-warp");
@@ -60,7 +60,7 @@ searchInput.addEventListener("input", () => {
     filteredTasksCompleted.forEach((task) => {
       searchTaskWarp.innerHTML += `
 
-      <div class="search-box__task search-box__task--complated" id="${task.id}">
+      <div class="search-box__task search-box__task--completed" id="${task.id}">
         <div class="search-box__task-text-warp">
           <span class="search-box__task-title">${task.title}</span>
           <span class="search-box__task-description">${task.description}</span>

@@ -1,58 +1,52 @@
-if (loadTasks().length) {
-  $.querySelector(".about-page").style.display = "none";
-  $.querySelector(".tasks").style.display = "block";
-  $.querySelector(".task__add").style.display = "flex";
-}
+const inputAboutPage = document.getElementById("input-about-page");
+const inputAboutPageBTN = document.getElementById("input-about-page-btn");
+const inputTaskContainer = document.getElementById("input-task-container");
+const inputTaskAddBTN = document.getElementById("input-task__add-btn");
 
+if (loadTasks().length) {
+  inputAboutPage.style.display = "none";
+  inputTaskContainer.style.display = "block";
+  inputTaskAddBTN.style.display = "flex";
+}
 /*=============================================
               Task Remove Function 
 =============================================*/
-function setupTaskEvents() {
-  $.querySelector(".tasks").addEventListener("click", function (e) {
-    if (e.target.closest(".task__tick-Square-icon")) {
-      const taskElement = e.target.closest(".task");
-      const taskId = Number(taskElement.getAttribute("data-task-id"));
-      completeTask(taskId);
-    }
-  });
-}
-
-function loadCompleted() {
-  const TasksCompleted = localStorage.getItem("Completed");
-  return TasksCompleted ? JSON.parse(TasksCompleted) : [];
-}
-
-function saveCompleted(tasks) {
-  localStorage.setItem("Completed", JSON.stringify(tasks));
-}
 
 function completeTask(taskId) {
   const taskElement = $.querySelector(`[data-task-id="${taskId}"]`);
+  taskElement.remove();
+
   loadTasks().forEach((task) => {
     if (task.id === taskId) {
-      task.completed === true;
-      if ((task.completed = true)) {
-        const Completeds = loadCompleted();
-        Completeds.push(task);
-        saveCompleted(Completeds);
-      }
+      saveCompleted(task);
     }
   });
-  if (taskElement) {
-    taskElement.remove();
-  }
-  const tasks = loadTasks();
-  const updatedTasks = tasks.filter((task) => task.id != taskId);
+
+  const updatedTasks = loadTasks().filter((task) => task.id != taskId);
   saveTasks(updatedTasks);
 }
-setupTaskEvents();
+
+function setupTaskEvents(taskWarp) {
+  taskWarp.addEventListener("click", function (e) {
+    const tick = e.target.closest(".task__tick-Square-icon");
+    if (tick) {
+      const taskElement = e.target.closest(".task");
+      const taskId = Number(taskElement.dataset.taskId);
+      completeTask(taskId);
+      // today
+      renderAllTasksToday();
+    }
+  });
+}
+
+setupTaskEvents(inputTaskContainer);
 renderAllTasks();
 
 /*=============================================
                    Add Task 
 =============================================*/
-$.querySelector(".task__add").addEventListener("click", () => {
-  $.querySelector(".task__add").style.display = "none";
-  $.querySelector("#add-task-box--input").style.display = "block";
+inputTaskAddBTN.addEventListener("click", () => {
+  inputTaskAddBTN.style.display = "none";
+  inputAddTaskBox.container.style.display = "block";
   renderAllTasks();
 });
