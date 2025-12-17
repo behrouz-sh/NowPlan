@@ -40,6 +40,11 @@ const sectionActive = function (active) {
   for (let i = 0; i < sectionActive.length; i++) {
     $.getElementById(sectionActive[i]).style.display = "none";
   }
+  if (window.innerWidth < 768) {
+    document.querySelector(".sidebar").classList.remove("sidebar--open");
+    document.querySelector(".main").classList.remove("main--open");
+    document.querySelector(".sidebar__open-btn-icon").style.display = "block";
+  }
 
   // active
   $.getElementById(active).style.display = "block";
@@ -57,6 +62,12 @@ sidebarListAddTaskBTN.addEventListener("click", () => {
     }
   );
   restTaskBox(slidebarAddTaskBox);
+});
+// --- SEARCH ------------------------------------------------------------------
+const searchListAddInputBTN = document.getElementById("sidebar-list__search");
+const searchWarp = document.querySelector(".search__warp");
+searchListAddInputBTN.addEventListener("click", function () {
+  searchWarp.style.display = "block";
 });
 
 // --- INPUT ------------------------------------------------------------------
@@ -98,15 +109,29 @@ sidebarListAddCompletedBTN.addEventListener("click", () => {
 const idUnenable = ["tasks", "filter-label", "profile"];
 idUnenable.forEach((id) => {
   $.getElementById(id).addEventListener("click", () => {
-    $.querySelector(".pagenone").style.display = "flex";
-    $.querySelector(".pagenone__layer").style.display = "block";
+    $.querySelector(".coming-soon-warp").style.display = "block";
   });
 });
-$.querySelector(".pagenone__btn-close").addEventListener("click", () => {
-  $.querySelector(".pagenone").style.display = "none";
-  $.querySelector(".pagenone__layer").style.display = "none";
+$.querySelector(".coming-soon__btn-close").addEventListener("click", () => {
+  $.querySelector(".coming-soon-warp").style.display = "none";
 });
-$.querySelector(".pagenone__layer").addEventListener("click", () => {
-  $.querySelector(".pagenone").style.display = "none";
-  $.querySelector(".pagenone__layer").style.display = "none";
+$.getElementById("coming-soon__layer").addEventListener("click", () => {
+  $.querySelector(".coming-soon-warp").style.display = "none";
 });
+
+/*=============================================
+              Responsive: remove classes under 700px
+=============================================*/
+const handleResizeSidebar = () => {
+  const sidebar = document.querySelector(".sidebar");
+  const main = document.querySelector(".main");
+  const openBtn = document.querySelector(".sidebar__open-btn-icon");
+  if (!sidebar || !main || !openBtn) return;
+  if (window.innerWidth < 768) {
+    sidebar.classList.remove("sidebar--open");
+    main.classList.remove("main--open");
+    openBtn.style.display = "block";
+  }
+};
+window.addEventListener("resize", handleResizeSidebar);
+window.addEventListener("load", handleResizeSidebar);

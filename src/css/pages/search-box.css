@@ -1,4 +1,5 @@
 .search__warp {
+  display: none;
 }
 .search-box {
   padding: 24px;
@@ -11,11 +12,9 @@
   max-height: 48rem;
   inset: 0;
   margin: auto;
-  display: none;
-}
-.search-box--open {
   display: block;
 }
+
 .search-box__input-warp {
   width: 100%;
   height: 4.8rem;
@@ -44,9 +43,6 @@
   color: var(--color-neutral-700);
 }
 
-#search-box-layer {
-  display: none;
-}
 .search-box__task-warp {
   overflow-y: auto;
   overscroll-behavior: contain;

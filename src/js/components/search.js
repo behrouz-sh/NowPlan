@@ -1,20 +1,14 @@
-const searchBtn = document.getElementById("search");
-const searchLayer = document.getElementById("search-box-layer");
 const searchBox = document.querySelector(".search-box");
 const searchInput = document.querySelector(".search-box__input");
 const searchTaskWarp = document.querySelector(".search-box__task-warp");
 const searchboxStatus = document.querySelector(".search-box__status");
-
+const searchLayer = document.getElementById("search-box-layer");
 /*===========================================
             Search Box open/close 
 ===========================================*/
-searchBtn.addEventListener("click", function () {
-  searchBox.classList.toggle("search-box--open");
-  searchLayer.style.display = "block";
-});
+
 searchLayer.addEventListener("click", () => {
-  searchBox.classList.remove("search-box--open");
-  searchLayer.style.display = "none";
+  searchWarp.style.display = "none";
   searchInput.value = "";
   searchTaskWarp.innerHTML = "";
   const spanEl = document.createElement("span");

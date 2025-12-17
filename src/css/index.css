@@ -33,15 +33,17 @@
 /*=======================================
           Undeveloped pages
 =======================================*/
-.pagenone {
-  position: absolute;
+.coming-soon-warp {
   display: none;
+}
+.coming-soon {
+  position: absolute;
+  display: flex;
   flex-direction: column;
-  width: 56rem;
-  top: 260px;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
+  max-width: 56rem;
+  height: fit-content;
+  inset: 0;
+  margin: auto;
   text-align: center;
   z-index: 100;
   background-color: var(--color-neutral-100);
@@ -51,7 +53,7 @@
   row-gap: 0.8rem;
   transition: opacity 2s ease;
 }
-.pagenone__layer {
+.coming-soon__layer {
   content: " ";
   width: 100vw;
   height: 100vh;
@@ -63,16 +65,16 @@
   display: none;
   transition: opacity 2s ease;
 }
-.pagenone__title {
+.coming-soon__title {
   font-size: 2.2rem;
   font-weight: 900;
   margin-bottom: 0.4rem;
 }
-.pagenone__text {
+.coming-soon__text {
   margin-bottom: 1.2em;
   color: var(--color-neutral-800);
 }
-.pagenone__btn-close {
+.coming-soon__btn-close {
   padding: 0.8rem;
   font-size: 1.6rem;
   font-weight: 700;
@@ -82,7 +84,7 @@
   color: var(--color-neutral-900);
   width: 100%;
 }
-.pagenone__btn-close:hover {
+.coming-soon__btn-close:hover {
   transition: all 500ms ease;
   background-color: var(--color-neutral-500);
 }
