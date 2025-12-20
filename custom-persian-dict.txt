@@ -1,6 +1,7 @@
+atsign
+coming-soon
 currentcolor
 jalali
-coming-soon
 Slidebar
 tarikh
 آپدیت
@@ -13,4 +14,5 @@ tarikh
 تمام
 کدنویسی
 کوچیک
+لیبل
 میتونی

@@ -6,6 +6,7 @@ const slidebarAddTaskBox = {
   hiddenDate: document.getElementById("slidebar-hiddenDate"),
   addBTN: document.getElementById("slidebar-add-task-box-add-btn"),
   closeBTN: document.getElementById("slidebar-add-task-box-close-btn"),
+  selectedLabels: [],
 };
 const inputAddTaskBox = {
   container: document.getElementById("input-add-task-box"),
@@ -280,7 +281,7 @@ function setupTaskBox(addTaskBox) {
       completedAt: false,
       dueDate: hiddenDate.value,
       priority: taskPriority.getAttribute("id"),
-      tags: -1,
+      label: slidebarAddTaskBox.selectedLabels || [],
     };
 
     if (taskTitle.value) {
@@ -289,7 +290,10 @@ function setupTaskBox(addTaskBox) {
       taskDescription.value = "";
       restPriority();
       restDate(hiddenDate);
-
+      slidebarAddTaskBox.selectedLabels = [];
+      slidebarLabelBTN.style.borderColor = "var(--color-neutral-500)";
+      slidebarLabelBTN.style.background = "transparent";
+      slidebarLabelBTN.style.color = "var(--color-neutral-700)";
       if (addTaskBox == slidebarAddTaskBox) {
         renderAllTasksToday();
       }

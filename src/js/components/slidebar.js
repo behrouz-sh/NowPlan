@@ -73,7 +73,7 @@ searchListAddInputBTN.addEventListener("click", function () {
 // --- INPUT ------------------------------------------------------------------
 const sidebarListAddInputBTN = $.getElementById("sidebar-list__inputs");
 sidebarListAddInputBTN.addEventListener("click", () => {
-  titleSection.textContent = "ورودی ها";
+  titleSection.textContent = "تمام کار ها";
   sidebarListLinkActive(sidebarListAddInputBTN);
   sectionActive("input-section");
 });
@@ -106,7 +106,7 @@ sidebarListAddCompletedBTN.addEventListener("click", () => {
 /*=============================================
               Feature Unenable
 =============================================*/
-const idUnenable = ["tasks", "filter-label", "profile"];
+const idUnenable = ["filter-label", "profile"];
 idUnenable.forEach((id) => {
   $.getElementById(id).addEventListener("click", () => {
     $.querySelector(".coming-soon-warp").style.display = "block";

@@ -73,6 +73,7 @@
   column-gap: 0.8rem;
   color: var(--color-neutral-700);
   font-weight: 600;
+  transition: all 250ms ease;
 }
 .add-task-box-cancel-icon {
   display: none;
@@ -97,7 +98,7 @@
 .add-task-box-option-more-icon {
   width: 2rem;
   height: 2rem;
-  color: var(--color-neutral-700);
+  color: inherit;
 }
 .add-task-box-option:hover,
 .add-task-box-option-more:hover .add-task-box-option-more-icon {
