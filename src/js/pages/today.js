@@ -26,9 +26,6 @@ function renderAllTasksToday() {
   if (loadTasksToday().length) {
     todayAboutPage.style.display = "none";
   }
-  // if (todayAddTaskBox.container.style.display == "block") {
-  //   todayTaskAddBTN.style.display = "none";
-  // }
   const tasks = loadTasksToday();
   todayTaskContainer.innerHTML = "";
   tasks.forEach((task) => {

@@ -88,7 +88,11 @@ sidebarListAddTodayBTN.addEventListener("click", () => {
   sectionActive("today-section");
 
   renderAllTasksToday();
-  todayTaskAddBTN.style.display = "flex";
+  if (!loadTasksToday().length) {
+    todayAboutPage.style.display = "block";
+  } else {
+    todayTaskAddBTN.style.display = "flex";
+  }
 });
 // --- COMPLETED  -------------------------------------------------------------
 const sidebarListAddCompletedBTN = $.getElementById("sidebar-list__completed");

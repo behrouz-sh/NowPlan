@@ -4,15 +4,17 @@ const slidebarAddTaskBox = {
   title: document.getElementById("slidebar-add-task-box-title"),
   description: document.getElementById("slidebar-add-task-box-description"),
   hiddenDate: document.getElementById("slidebar-hiddenDate"),
+  selectedLabels: [],
   addBTN: document.getElementById("slidebar-add-task-box-add-btn"),
   closeBTN: document.getElementById("slidebar-add-task-box-close-btn"),
-  selectedLabels: [],
 };
 const inputAddTaskBox = {
   container: document.getElementById("input-add-task-box"),
   title: document.getElementById("input-add-task-box-title"),
   description: document.getElementById("input-add-task-box-description"),
   hiddenDate: document.getElementById("input-hiddenDate"),
+
+  selectedLabels: [],
   addBTN: document.getElementById("input-add-task-box-add-btn"),
   closeBTN: document.getElementById("input-add-task-box-btn-close"),
 };
@@ -21,10 +23,11 @@ const todayAddTaskBox = {
   title: document.getElementById("today-add-task-box-title"),
   description: document.getElementById("today-add-task-box-description"),
   hiddenDate: document.getElementById("today-hiddenDate"),
+  selectedLabels: [],
+
   addBTN: document.getElementById("today-add-task-box-add-btn"),
   closeBTN: document.getElementById("today-add-task-box-btn-close"),
 };
-
 /*=============================================
                change placeholder - *ai*
 =============================================*/
@@ -258,6 +261,146 @@ toggleMenu("input-priority-btn", "input-priority__submenu");
 toggleMenu("today-priority-btn", "today-priority__submenu");
 
 /*=============================================
+                  Label Item
+=============================================*/
+function saveLabel(labels) {
+  localStorage.setItem("labels", JSON.stringify(labels));
+}
+function loadLabel() {
+  var labels = localStorage.getItem("labels");
+  return labels ? JSON.parse(labels) : [];
+}
+function addLabelDOM(sectionName) {
+  const LabelsContainer = document.getElementById(`${sectionName}-labels`);
+  const LabelNotFound = document.getElementById(
+    `${sectionName}-label-not-found`
+  );
+  const AddLabelBtn = document.getElementById(`${sectionName}-add-label__btn`);
+  const SearchBoxText = document.getElementById(
+    `${sectionName}-label__search-box`
+  );
+
+  const labels = loadLabel();
+  const filteredLabel = labels.filter((label) =>
+    label.toLowerCase().includes(SearchBoxText.value.trim().toLowerCase())
+  );
+
+  if (!filteredLabel.length && SearchBoxText.value.trim() !== "") {
+    LabelNotFound.style.display = "inline";
+    AddLabelBtn.style.display = "flex";
+  } else {
+    LabelNotFound.style.display = "none";
+    AddLabelBtn.style.display = "none";
+  }
+
+  let html = "";
+  filteredLabel.forEach((e) => {
+    html += `
+        <label class="label">
+          <div class="label__text-warp">
+            <span class="label__text-atsign">@</span>
+            <span class="label__text-label">${e}</span>
+          </div>
+          <input class="label__checkbox" type="checkbox" name="">
+        </label>
+      `;
+  });
+  LabelsContainer.innerHTML = html;
+}
+
+// SlideBar Variable
+
+function setupLabel(sectionName, AddTaskBox) {
+  const LabelBTN = document.getElementById(`${sectionName}-label--btn`);
+  const LabelSubmenu = document.getElementById(`${sectionName}-label__submenu`);
+  const SearchBoxText = document.getElementById(
+    `${sectionName}-label__search-box`
+  );
+  const AddLabelBtn = document.getElementById(`${sectionName}-add-label__btn`);
+  const AddLabelText = document.getElementById(
+    `${sectionName}-add-label__text`
+  );
+  const LabelsContainer = document.getElementById(`${sectionName}-labels`);
+
+  LabelBTN.addEventListener("click", () => {
+    LabelSubmenu.classList.toggle("label__submenu--open");
+    addLabelDOM(sectionName);
+
+    const selectedLabels = AddTaskBox.selectedLabels || [];
+
+    document.querySelectorAll(".label").forEach((labelEl) => {
+      const labelText = labelEl
+        .querySelector(".label__text-label")
+        .innerText.trim();
+      const checkbox = labelEl.querySelector(".label__checkbox");
+      checkbox.checked = selectedLabels.includes(labelText);
+    });
+
+    LabelsContainer.addEventListener(
+      "change",
+      (e) => {
+        if (!e.target.classList.contains("label__checkbox")) return;
+
+        const labelText = e.target
+          .closest(".label")
+          .querySelector(".label__text-label")
+          .innerText.trim();
+
+        if (e.target.checked) {
+          if (!selectedLabels.includes(labelText)) {
+            selectedLabels.push(labelText);
+          }
+        } else {
+          const index = selectedLabels.indexOf(labelText);
+          if (index !== -1) {
+            selectedLabels.splice(index, 1);
+          }
+        }
+        AddTaskBox.selectedLabels = selectedLabels;
+        if (AddTaskBox.selectedLabels.length) {
+          LabelBTN.style.borderColor = "var(--color-primary-300)";
+          LabelBTN.style.background = "var(--color-primary-100)";
+          LabelBTN.style.color = "var(--color-primary-300)";
+        } else {
+          LabelBTN.style.borderColor = "var(--color-neutral-500)";
+          LabelBTN.style.background = "transparent";
+          LabelBTN.style.color = "var(--color-neutral-700)";
+        }
+      },
+      { once: false }
+    );
+  });
+
+  SearchBoxText.addEventListener("input", () => {
+    AddLabelText.textContent = SearchBoxText.value;
+    addLabelDOM(sectionName);
+  });
+
+  AddLabelBtn.addEventListener("click", () => {
+    const labels = loadLabel();
+    labels.push(AddLabelText.textContent.trim());
+    saveLabel(labels);
+    addLabelDOM(sectionName);
+  });
+}
+
+setupLabel("slidebar", slidebarAddTaskBox);
+setupLabel("input", inputAddTaskBox);
+setupLabel("today", todayAddTaskBox);
+
+function restLabel() {
+  const arr = ["slidebar-label--btn", "input-label--btn"];
+  for (let i = 0; i < arr.length; i++) {
+    const LabelBTN = document.getElementById(arr[i]);
+    slidebarAddTaskBox.selectedLabels = [];
+    inputAddTaskBox.selectedLabels = [];
+
+    LabelBTN.style.borderColor = "var(--color-neutral-500)";
+    LabelBTN.style.background = "transparent";
+    LabelBTN.style.color = "var(--color-neutral-700)";
+  }
+}
+/*=============================================
               Add BTN (Task Box)
 =============================================*/
 function setupTaskBox(addTaskBox) {
@@ -281,7 +424,13 @@ function setupTaskBox(addTaskBox) {
       completedAt: false,
       dueDate: hiddenDate.value,
       priority: taskPriority.getAttribute("id"),
-      label: slidebarAddTaskBox.selectedLabels || [],
+      label: inputAddTaskBox.selectedLabels.length
+        ? inputAddTaskBox.selectedLabels
+        : todayAddTaskBox.selectedLabels.length
+        ? todayAddTaskBox.selectedLabels
+        : slidebarAddTaskBox.selectedLabels.length
+        ? slidebarAddTaskBox.selectedLabels
+        : [],
     };
 
     if (taskTitle.value) {
@@ -290,10 +439,7 @@ function setupTaskBox(addTaskBox) {
       taskDescription.value = "";
       restPriority();
       restDate(hiddenDate);
-      slidebarAddTaskBox.selectedLabels = [];
-      slidebarLabelBTN.style.borderColor = "var(--color-neutral-500)";
-      slidebarLabelBTN.style.background = "transparent";
-      slidebarLabelBTN.style.color = "var(--color-neutral-700)";
+      restLabel();
       if (addTaskBox == slidebarAddTaskBox) {
         renderAllTasksToday();
       }
@@ -350,9 +496,10 @@ todayAddTaskBox.closeBTN.addEventListener("click", () => {
   todayAddTaskBox.container.style.display = "none";
   if (!loadTasksToday().length) {
     todayAboutPage.style.display = "block";
-    return;
+  }else{
+    
+    todayTaskAddBTN.style.display = "flex";
   }
-  todayTaskAddBTN.style.display = "flex";
 
   // rest
   restTaskBox(todayAddTaskBox);

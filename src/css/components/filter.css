@@ -3,6 +3,7 @@
 .label-warp {
   position: relative;
 }
+
 .label__submenu {
   position: absolute;
   display: none;
