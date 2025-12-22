@@ -32,14 +32,18 @@
 .box-completed-details span {
   display: block;
 }
+.box-completed-details {
+  display: none;
+}
 .box-completed-details-warp {
   display: none;
 }
 .box-completed-details {
+  display: block;
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 900px;
+  max-width: 900px;
   height: 400px;
   border-radius: 3.2rem;
   padding: 40px;
@@ -53,13 +57,11 @@
   font-size: 2.4rem;
   font-weight: 600;
   color: var(--color-neutral-900);
-  border-bottom: 1px dashed var(--color-neutral-500);
   padding-bottom: 1.6rem;
   margin-bottom: 0.8rem;
 }
 .box-completed-details__description-warp {
   display: none;
-  margin: 1.2rem 0;
 }
 .box-completed-details__description-title {
   font-weight: 500;
@@ -82,29 +84,34 @@
   border-radius: 0.8rem;
   border: 1px solid var(--color-neutral-300);
   background: rgba(0, 0, 0, 0.02);
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+}
+.box-completed-details__label-warp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 .box-completed-details__priority-tags {
   display: flex;
   align-items: center;
+  line-height: 1;
+  gap: 0.4rem;
   justify-content: center;
   padding: 8px 16px;
   border-radius: 0.8rem;
-}
-.box-completed-details__priority {
+  background-color: var(--color-neutral-300);
+  color: var(--color-neutral-700);
 }
 
 .box-completed-details__complateAt-state-warp {
-  right: 0;
-  left: 0;
-  bottom: 0;
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 1px solid var(--color-neutral-300);
   padding: 16px 24px;
-  border-radius: 0 0 1.6rem 1.6rem;
-  background: var(--color-neutral-300);
+  border-radius: 1.6rem;
+  background: var(--color-neutral-200);
 }
 .box-completed-details__state-warp {
   display: flex;

@@ -33,7 +33,8 @@
     width: 24rem;
   }
   #slidebar-add-task-box,
-  .search-box {
+  .search-box,
+  .box-completed-details {
     margin: auto 4rem;
   }
 }
@@ -55,7 +56,8 @@
     top: 12px;
   }
   #slidebar-add-task-box,
-  .search-box {
+  .search-box,
+  .box-completed-details {
     margin: auto 2.4rem;
   }
 }

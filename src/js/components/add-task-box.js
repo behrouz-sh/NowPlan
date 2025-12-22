@@ -248,11 +248,21 @@ document.querySelectorAll(priorityItem).forEach((prioritySubmenuItem) => {
     }
   });
 });
-function toggleMenu(buttonSelector, menuSelector) {
-  document.getElementById(buttonSelector).addEventListener("click", () => {
-    document
-      .getElementById(menuSelector)
-      .classList.toggle("priority__submenu--active");
+function toggleMenu(button, menu) {
+  const menuSelector = document.getElementById(menu);
+  const buttonSelector = document.getElementById(button);
+
+  document.getElementById(button).addEventListener("click", () => {
+    document.getElementById(menu).classList.toggle("priority__submenu--active");
+  });
+
+  document.querySelector(".main").addEventListener("click", (e) => {
+    if (
+      !menuSelector.contains(e.target) &&
+      !buttonSelector.contains(e.target)
+    ) {
+      menuSelector.classList.remove("priority__submenu--active");
+    }
   });
 }
 
@@ -307,8 +317,8 @@ function addLabelDOM(sectionName) {
   });
   LabelsContainer.innerHTML = html;
 }
-
-// SlideBar Variable
+const LabelBTN = document.getElementById(`input-label--btn`);
+const LabelSubmenu = document.getElementById(`input-label__submenu`);
 
 function setupLabel(sectionName, AddTaskBox) {
   const LabelBTN = document.getElementById(`${sectionName}-label--btn`);
@@ -323,7 +333,13 @@ function setupLabel(sectionName, AddTaskBox) {
   const LabelsContainer = document.getElementById(`${sectionName}-labels`);
 
   LabelBTN.addEventListener("click", () => {
-    LabelSubmenu.classList.toggle("label__submenu--open");
+    document.querySelector(".main").addEventListener("click", (e) => {
+      if (LabelBTN.contains(e.target)) {
+        LabelSubmenu.classList.add("label__submenu--open");
+      } else if (!LabelSubmenu.contains(e.target)) {
+        LabelSubmenu.classList.remove("label__submenu--open");
+      }
+    });
     addLabelDOM(sectionName);
 
     const selectedLabels = AddTaskBox.selectedLabels || [];
@@ -389,7 +405,10 @@ setupLabel("input", inputAddTaskBox);
 setupLabel("today", todayAddTaskBox);
 
 function restLabel() {
-  const arr = ["slidebar-label--btn", "input-label--btn"];
+  const arr = ["slidebar-label--btn", "input-label--btn", "today-label--btn"];
+  document
+    .getElementById("slidebar-label__submenu")
+    .classList.remove("label__submenu--open");
   for (let i = 0; i < arr.length; i++) {
     const LabelBTN = document.getElementById(arr[i]);
     slidebarAddTaskBox.selectedLabels = [];
@@ -469,6 +488,7 @@ const restTaskBox = function (addTaskBox) {
   addTaskBox.description.value = "";
   restDate(addTaskBox.hiddenDate);
   restPriority();
+  restLabel();
 };
 
 slidebarAddTaskBox.closeBTN.addEventListener("click", () => {
@@ -496,8 +516,7 @@ todayAddTaskBox.closeBTN.addEventListener("click", () => {
   todayAddTaskBox.container.style.display = "none";
   if (!loadTasksToday().length) {
     todayAboutPage.style.display = "block";
-  }else{
-    
+  } else {
     todayTaskAddBTN.style.display = "flex";
   }
 
