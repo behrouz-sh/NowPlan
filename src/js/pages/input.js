@@ -9,7 +9,7 @@ if (loadTasks().length) {
   inputTaskAddBTN.style.display = "flex";
 }
 /*=============================================
-              Task Remove Function 
+              Task Remove Function
 =============================================*/
 
 function completeTask(taskId) {
@@ -43,7 +43,7 @@ setupTaskEvents(inputTaskContainer);
 renderAllTasks();
 
 /*=============================================
-                   Add Task 
+                   Add Task
 =============================================*/
 inputTaskAddBTN.addEventListener("click", () => {
   inputTaskAddBTN.style.display = "none";

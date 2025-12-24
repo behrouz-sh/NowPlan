@@ -1,78 +1,108 @@
 .sidebar {
-  display: none;
-  background-color: var(--color-neutral-300);
-  height: 100vh;
-  padding: 2.4rem;
-  user-select: none;
-  top: 0;
   position: fixed;
   z-index: 50;
-  transition: width 2s ease;
+  top: 0;
+
+  display: none;
   overflow-y: auto;
+
+  height: 100vh;
+  padding: 2.4rem;
+
+  user-select: none;
+  transition: width 2s ease;
+
+  background-color: var(--color-neutral-300);
+
   overscroll-behavior: contain;
-  scrollbar-width: 4px;
-  scrollbar-color: #edeff3 transparent;
+  scrollbar-width: .4rem;
+  scrollbar-color: var(--color-neutral-300) transparent;
 }
+
 .sidebar--open {
-  width: 48rem;
   display: block;
+  width: 48rem;
 }
+
 .sidebar--close .sidebar__open-close-btn-icon {
   position: absolute;
   right: 410px;
+
+  transition: 0.3s;
   transform: rotate(90deg);
-  transition: transform 2s ease;
+
   background-color: var(--color-neutral-300);
 }
-/* 
+
+/*
 =======================================
                 Profile
-=======================================*/
+=======================================
+*/
+
 .sidebar__profile-warp {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-64);
+
+  margin-bottom: 6.4rem;
 }
+
 .sidebar__profile {
   display: flex;
   align-items: center;
-  column-gap: var(--space-16);
+
   padding: 0.4rem 0.8rem;
+
+  transition: 0.3s;
+
   border-radius: var(--radius-md);
-  transition: all 0.2s ease;
+
+  column-gap: 1.6rem;
 }
+
 .sidebar__profile-img {
   width: 4rem;
   height: 4rem;
-  background-image: url(../../../assets/images/profile.jpg);
+
   border-radius: var(--radius-full);
+  background-image: url(../../../assets/images/profile.jpg);
 }
+
 .sidebar__profile-name-text {
-  font-size: var(--font-size-xl);
+  font-size: 1.8rem;
   font-weight: var(--font-weight-medium);
 }
+
 .sidebar__profile-icon {
   width: 2rem;
   height: 2rem;
 }
+
 .sidebar__close-btn-icon,
 .sidebar__open-btn-icon {
-  transform: rotate(-90deg);
   width: 4rem;
   height: 4rem;
-  border-radius: var(--radius-md);
   padding: 0.8rem;
-  transition: all 0.2s ease;
+
+  transition: 0.3s;
+  transform: rotate(-90deg);
+
+  border-radius: var(--radius-md);
 }
+
 .sidebar__open-btn-icon {
-  display: none;
+  position: absolute;
   top: 24px;
   right: 24px;
-  position: absolute;
-  transition: all 0.2s ease;
+
+  display: none;
+
+  transition: 0.3s;
+
   background-color: var(--color-neutral-400);
 }
+
 .sidebar__profile:hover,
 .sidebar__close-btn-icon:hover,
 .sidebar__open-btn-icon:hover {
@@ -82,20 +112,29 @@
 /*
 =======================================
              Sidebar List
-=======================================*/
+=======================================
+*/
+
 .sidebar__list {
   margin-bottom: 4rem;
 }
+
 /* .sidebar__list-item {} */
+
 .sidebar__list-link {
   display: flex;
   align-items: center;
-  column-gap: 2rem;
+
   padding: 1.2rem 1.6rem;
+
+  transition: 0.3s;
+
   border-radius: var(--radius-md);
-  transition: all 0.2s ease;
   border-radius: var(--radius-md);
+
+  column-gap: 2rem;
 }
+
 .sidebar__list-link:hover {
   background-color: var(--color-neutral-400);
 }
@@ -103,23 +142,27 @@
 .sidebar__list-icon {
   color: inherit;
 }
+
 .sidebar__list-text {
-  font-size: var(--font-size-2xl);
+  font-size: 2rem;
 }
 
 .sidebar__list-link-add-task {
   padding: 0.4rem 0.8rem;
+
   column-gap: 1.2rem;
 }
+
 .sidebar__list-icon-add-task {
   width: 4rem;
   height: 4rem;
   padding: 0.8rem;
-  background-color: var(--color-primary-300);
 
-  border-radius: var(--radius-full);
   color: var(--color-neutral-100);
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-300);
 }
+
 .sidebar__list-link--active,
 .sidebar__list-link--active:hover {
   color: var(--color-primary-300);
@@ -129,86 +172,118 @@
 /*
 =======================================
            Slidebar Project
-=======================================*/
+=======================================
+*/
+
 .sidebar__project-warp {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding: 0.4rem 0.8rem;
+
+  transition: 0.3s;
+
   color: var(--color-neutral-800);
   border-radius: 0.8rem;
-  transition: all 0.2s ease;
 }
+
 .sidebar__project-warp:hover {
   background-color: var(--color-neutral-400);
 }
+
 .sidebar__project-text {
-  font-size: var(--font-size-xl);
+  font-size: 1.6rem;
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-loose);
 }
+
 .sidebar__project-icons {
   display: flex;
   align-items: center;
-  column-gap: var(--space-2);
+
+  column-gap: .2rem;
 }
+
 .sidebar__project-arrow-icon,
 .sidebar__project-plus-icon {
-  padding: 0.2rem;
-  border-radius: 0.8rem;
   display: none;
-  transition: all 0.2s ease;
+
+  padding: 0.2rem;
+
+  transition: 0.3s;
+
+  border-radius: 0.8rem;
 }
+
 .sidebar__project-arrow-icon:hover,
 .sidebar__project-plus-icon:hover {
   background-color: var(--color-neutral-500);
 }
+
 .sidebar:hover .sidebar__project-arrow-icon,
 .sidebar__project-warp:hover .sidebar__project-plus-icon {
   display: block;
 }
 
 /* .sidebar__project-list {} */
+
 .sidebar__project-list-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding: 1rem;
-  border-radius: var(--radius-md);
-  transition: all 0.2s ease;
+
+  transition: 0.3s;
+
   color: var(--color-neutral-800);
+  border-radius: var(--radius-md);
 }
+
 .sidebar__project-list-item:hover {
   background-color: var(--color-neutral-400);
 }
+
 .sidebar__project-list-link {
   display: flex;
   align-items: center;
-  column-gap: 0.6rem;
+
   width: 100%;
+
+  column-gap: 0.6rem;
 }
+
 /* .sidebar__project-list-icon {} */
-.sidebar__project-list-text {
-  line-height: var(--line-height-normal);
-}
+
+/* .sidebar__project-list-text {} */
+
 .sidebar__project-list-count-text {
+  font-size: 1.4rem;
+
+  transition: 0.3s;
+
   color: var(--color-neutral-600);
-  font-size: var(--font-size-md);
-  line-height: var(--line-height-normal);
-  transition: all 0.2s ease;
+
 }
+
 .sidebar__project-list-more-icon {
-  padding: 0.2rem;
-  border-radius: 0.8rem;
-  transition: all 0.2s ease;
   display: none;
+
+  padding: 0.2rem;
+
+  transition: 0.3s;
+
+  border-radius: 0.8rem;
 }
+
 .sidebar__project-list-more-icon:hover {
   background-color: var(--color-neutral-500);
 }
+
 .sidebar__project-list-item:hover .sidebar__project-list-count-text {
   display: none;
 }
+
 .sidebar__project-list-item:hover .sidebar__project-list-more-icon {
   display: block;
 }

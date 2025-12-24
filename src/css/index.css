@@ -1,90 +1,66 @@
-@import url(./typography.css);
-@import url(./variables.css);
-@import url(./base.css);
-@import url(../css/components/about-page.css);
-@import url(../css/components/jalalidatepicker.min.css);
-@import url(../css/components/add-task-box.css);
+@import url(./typography.css); /* ok*/
+@import url(./variables.css); /* ok*/
+@import url(./base.css); /* ok*/
+@import url(../css/components/sidebar.css); /* ok*/
+@import url(../css/components/buttons.css); /* ok*/
+@import url(../css/components/about-page.css); /* ok*/
+@import url(../css/components/add-task-box.css); /* ok*/
+@import url(../css/components/search-box.css); /* ok*/
+@import url(../css/vendor/jalalidatepicker.min.css); /* ok*/
 
 .main {
-  transition: all 500ms ease;
-  height: 100vh;
   overflow-y: auto;
+
+  height: 100vh;
+
+  transition: 0.3s;
+
   overscroll-behavior: contain;
   scrollbar-width: 4rem;
-  scrollbar-color: #b7bac4 transparent;
+  scrollbar-color: var(--color-neutral-500) transparent;
 }
+
 .main--open {
   margin-right: 48rem;
 }
-.title-section {
-  z-index: 49;
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-medium);
-  text-align: center;
-  padding: 1.6rem;
-  border-bottom: 1px solid var(--color-neutral-300);
-  border-radius: 0 0 1.6rem 1.6rem;
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  box-shadow: 0px 20px 20px 0px rgba(237, 239, 243, 0.5);
-}
 
-/*=======================================
-          Undeveloped pages
-=======================================*/
-.coming-soon-warp {
-  display: none;
-}
-.coming-soon {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  max-width: 56rem;
-  height: fit-content;
-  inset: 0;
-  margin: auto;
-  text-align: center;
-  z-index: 100;
-  background-color: var(--color-neutral-100);
-  border: 1px solid var(--color-neutral-500);
-  padding: 4.8rem;
-  border-radius: 2.4rem;
-  row-gap: 0.8rem;
-  transition: opacity 2s ease;
-}
-.coming-soon__layer {
-  content: " ";
+.bg-layer {
+  position: fixed;
+  z-index: 90;
+
+  display: block;
+
   width: 100vw;
   height: 100vh;
+
+  content: ' ';
+  transition: 0.3s;
+
+  background-color: rgba(183, 186, 196, 0.2);
+
   inset: 0;
-  background-color: rgba(107, 114, 128, 0.2);
   backdrop-filter: blur(0.4rem);
-  position: fixed;
-  z-index: 99;
+}
+
+.title-section {
+  font-size: 2rem;
+  font-weight: var(--font-weight-medium);
+
+  position: sticky;
+  z-index: 49;
+  top: 0;
+
+  padding: 1.6rem;
+
+  text-align: center;
+
+  border-bottom: 1px solid var(--color-neutral-300);
+  border-radius: 0 0 1.6rem 1.6rem;
+  background-color: var(--color-neutral-100);
+  box-shadow: var(--shadow-md);
+}
+
+.page {
   display: none;
-  transition: opacity 2s ease;
-}
-.coming-soon__title {
-  font-size: 2.2rem;
-  font-weight: 900;
-  margin-bottom: 0.4rem;
-}
-.coming-soon__text {
-  margin-bottom: 1.2em;
-  color: var(--color-neutral-800);
-}
-.coming-soon__btn-close {
-  padding: 0.8rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 0.8rem;
-  background-color: var(--color-neutral-400);
-  color: var(--color-neutral-900);
-  width: 100%;
-}
-.coming-soon__btn-close:hover {
-  transition: all 500ms ease;
-  background-color: var(--color-neutral-500);
+  padding: 0 2.4rem 24rem;
 }

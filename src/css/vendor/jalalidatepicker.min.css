@@ -41,8 +41,7 @@ jdp-container {
 @media only screen and (max-width: 481px) {
   jdp-container {
     -moz-animation: jdpOpenAnimationMobile 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    -webkit-animation: jdpOpenAnimationMobile 0.3s
-      cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-animation: jdpOpenAnimationMobile 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     animation: jdpOpenAnimationMobile 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     border-radius: 4px 4px 0 0;
     bottom: 0 !important;
@@ -124,7 +123,7 @@ jdp-container .jdp-year select {
   font-size: inherit;
   font-weight: 300;
   height: auto;
-  line-height: inherit;
+  :inherit ;
   margin: 0;
   outline: none;
   padding: 0;
@@ -217,7 +216,7 @@ jdp-container .jdp-day-name {
   font-weight: 400;
   height: 31px;
   justify-content: center;
-  line-height: 31px;
+  :31px ;
   margin: 2px 0;
   position: relative;
   text-align: center;
@@ -328,7 +327,7 @@ jdp-container .jdp-time-container .jdp-time select {
   padding: 0.5rem 1rem 0.5rem 7px;
 }
 jdp-container .jdp-time-container .jdp-time:after {
-  content: ":";
+  content: ':';
   font-size: 1.5rem;
   height: 100%;
   position: absolute;

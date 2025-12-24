@@ -17,47 +17,24 @@
   --color-neutral-800: #3f3f46;
   --color-neutral-900: #1e1e1e;
 
-  /* Status */
-  --color-success-100: #22c55e;
-  --color-success-200: #22c55e;
-  --color-success-500: #22c55e;
-  --color-success-700: #22c55e;
-  --color-success-900: #22c55e;
-
-  --color-warning-100: #facc15;
-  --color-warning-200: #facc15;
-  --color-warning-500: #facc15;
-  --color-warning-700: #facc15;
-  --color-warning-900: #facc15;
-
-  --color-error-100: #ef4444;
-  --color-error-200: #ef4444;
-  --color-error-500: #ef4444;
-  --color-error-700: #ef4444;
-  --color-error-900: #ef4444;
+  /* -Status */
+  --color-success: #22c55e;
+  --color-warning: #facc15;
+  --color-error: #ef4444;
 
   /* Typography */
-  --font-family-base: "Vazirmatn", sans-serif;
-
-  --font-size-xs: 10px;
-  --font-size-sm: 12px;
-  --font-size-md: 14px;
-  --font-size-lg: 16px;
-  --font-size-xl: 18px;
-  --font-size-2xl: 20px;
-  --font-size-3xl: 24px;
+  --font-family-base: 'Vazirmatn', sans-serif;
 
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+  --font-weight-heavy: 900;
 
-  --line-height-tight: 1.2;
   --line-height-normal: 1.5;
-  --line-height-loose: 1.8;
 
   /* Spacing Scale */
-  --space-2: 2px;
+  /* --space-2: 2px;
   --space-4: 4px;
   --space-6: 6px;
   --space-8: 8px;
@@ -65,7 +42,7 @@
   --space-16: 16px;
   --space-24: 24px;
   --space-32: 32px;
-  --space-64: 64px;
+  --space-64: 64px; */
 
   /* Border Radius */
   --radius-sm: 4px;
@@ -74,7 +51,8 @@
   --radius-full: 999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.16);
+  --shadow-sm: 0px 20px 20px 0px rgba(237, 239, 243, 0.3);
+  --shadow-md: 0px 20px 20px 0px rgba(237, 239, 243, 0.5);
+  --shadow-lg: 0px 20px 20px 0px rgba(237, 239, 243, 0.8);
+  
 }

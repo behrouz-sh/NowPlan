@@ -111,7 +111,7 @@ document
     );
     boxCompletedDetailsWarp.innerHTML = "";
     boxCompletedDetailsWarp.append(boxCompletedDetailsPriority);
-    for (let i = 0; i < task.label.length; i++) {
+    for (let i = 0; i <   task.label.length; i++) {
       boxCompletedDetailsWarp.innerHTML += `
 
   <div class="box-completed-details__priority-tags">
@@ -136,7 +136,3 @@ document
     document.querySelector(".box-completed-details-warp").style.display =
       "none";
   });
-
-`
-  <div class="box-completed-details__priority-tags" style="background: rgba(107, 114, 128, 0.12); color: rgb(107, 114, 128);">بدون اولویت</div>
-  `;

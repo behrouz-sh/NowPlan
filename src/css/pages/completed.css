@@ -18,7 +18,7 @@
 }
 
 .task__completed .task::after {
-  content: "";
+  content: '';
 
   position: absolute;
   background: rgba(34, 197, 94, 0.8);
@@ -55,7 +55,7 @@
 }
 .box-completed-details__title {
   font-size: 2.4rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
   color: var(--color-neutral-900);
   padding-bottom: 1.6rem;
   margin-bottom: 0.8rem;
@@ -64,7 +64,7 @@
   display: none;
 }
 .box-completed-details__description-title {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   margin-bottom: 0.4rem;
 }
 .box-completed-details__description {
@@ -95,7 +95,7 @@
 .box-completed-details__priority-tags {
   display: flex;
   align-items: center;
-  line-height: 1;
+  :1 ;
   gap: 0.4rem;
   justify-content: center;
   padding: 8px 16px;
@@ -116,10 +116,10 @@
 .box-completed-details__state-warp {
   display: flex;
   column-gap: 0.4rem;
-  color: var(--color-success-100);
+  color: var(--color-success);
 }
 .box-completed-details__state {
-  font-weight: 900;
+  font-weight: var(--font-weight-heavy);
 }
 
 .box-completed-details__completedAt {

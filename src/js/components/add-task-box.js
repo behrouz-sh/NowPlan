@@ -1,62 +1,41 @@
 const slidebarAddTaskBox = {
-  container: document.getElementById("slidebar-add-task-box"),
-  backgroundLayer: document.getElementById("add-task-box__layer"),
-  title: document.getElementById("slidebar-add-task-box-title"),
-  description: document.getElementById("slidebar-add-task-box-description"),
-  hiddenDate: document.getElementById("slidebar-hiddenDate"),
+  container: document.getElementById('slidebar-add-task-box'),
+  backgroundLayer: document.getElementById('add-task-box__layer'),
+  title: document.getElementById('slidebar-add-task-box-title'),
+  description: document.getElementById('slidebar-add-task-box-description'),
+  hiddenDate: document.getElementById('slidebar-hiddenDate'),
   selectedLabels: [],
-  addBTN: document.getElementById("slidebar-add-task-box-add-btn"),
-  closeBTN: document.getElementById("slidebar-add-task-box-close-btn"),
+  addBTN: document.getElementById('slidebar-add-task-box-add-btn'),
+  closeBTN: document.getElementById('slidebar-add-task-box-close-btn')
 };
 const inputAddTaskBox = {
-  container: document.getElementById("input-add-task-box"),
-  title: document.getElementById("input-add-task-box-title"),
-  description: document.getElementById("input-add-task-box-description"),
-  hiddenDate: document.getElementById("input-hiddenDate"),
+  container: document.getElementById('input-add-task-box'),
+  title: document.getElementById('input-add-task-box-title'),
+  description: document.getElementById('input-add-task-box-description'),
+  hiddenDate: document.getElementById('input-hiddenDate'),
 
   selectedLabels: [],
-  addBTN: document.getElementById("input-add-task-box-add-btn"),
-  closeBTN: document.getElementById("input-add-task-box-btn-close"),
+  addBTN: document.getElementById('input-add-task-box-add-btn'),
+  closeBTN: document.getElementById('input-add-task-box-btn-close')
 };
 const todayAddTaskBox = {
-  container: document.getElementById("today-add-task-box"),
-  title: document.getElementById("today-add-task-box-title"),
-  description: document.getElementById("today-add-task-box-description"),
-  hiddenDate: document.getElementById("today-hiddenDate"),
+  container: document.getElementById('today-add-task-box'),
+  title: document.getElementById('today-add-task-box-title'),
+  description: document.getElementById('today-add-task-box-description'),
+  hiddenDate: document.getElementById('today-hiddenDate'),
   selectedLabels: [],
 
-  addBTN: document.getElementById("today-add-task-box-add-btn"),
-  closeBTN: document.getElementById("today-add-task-box-btn-close"),
+  addBTN: document.getElementById('today-add-task-box-add-btn'),
+  closeBTN: document.getElementById('today-add-task-box-btn-close')
 };
 /*=============================================
                change placeholder - *ai*
 =============================================*/
-const tasks = [
-  "چک کردن ایمیل‌های مهم",
-  "نوشتن گزارش پروژه",
-  "جلسه آنلاین با تیم",
-  "مرور تقویم روزانه",
-  "برنامه‌ریزی برای هفته آینده",
-  "مرتب کردن میز کار",
-  "نوشتن یادداشت‌های مهم",
-  "تمرین ۲۰ دقیقه‌ای یوگا",
-  "خواندن فصل بعدی کتاب",
-  "آماده کردن وعده غذایی سالم",
-  "پیاده‌روی کوتاه بعد از ناهار",
-  "تماس با دوست یا خانواده",
-  "به‌روزرسانی لیست خرید",
-  "بررسی شبکه‌های اجتماعی",
-  "تنظیم آلارم یا یادآور",
-  "مرور و پاکسازی فایل‌های کامپیوتر",
-  "تمرین مهارت جدید (کدنویسی، زبان، طراحی)",
-  "نوشتن ایده‌های خلاقانه",
-  "استراحت کوتاه و تمرین تنفس",
-  "مرور اهداف روز و هفته",
-];
+const tasks = ['چک کردن ایمیل‌های مهم', 'نوشتن گزارش پروژه', 'جلسه آنلاین با تیم', 'مرور تقویم روزانه', 'برنامه‌ریزی برای هفته آینده', 'مرتب کردن میز کار', 'نوشتن یادداشت‌های مهم', 'تمرین ۲۰ دقیقه‌ای یوگا', 'خواندن فصل بعدی کتاب', 'آماده کردن وعده غذایی سالم', 'پیاده‌روی کوتاه بعد از ناهار', 'تماس با دوست یا خانواده', 'به‌روزرسانی لیست خرید', 'بررسی شبکه‌های اجتماعی', 'تنظیم آلارم یا یادآور', 'مرور و پاکسازی فایل‌های کامپیوتر', 'تمرین مهارت جدید (کدنویسی، زبان، طراحی)', 'نوشتن ایده‌های خلاقانه', 'استراحت کوتاه و تمرین تنفس', 'مرور اهداف روز و هفته'];
 
 const typePlaceholder = function (text, callback, inputEl) {
   let i = 0;
-  inputEl.placeholder = "";
+  inputEl.placeholder = '';
   const interval = setInterval(() => {
     inputEl.placeholder += text[i];
     i++;
@@ -78,11 +57,7 @@ const changePlaceholder = function (inputEl) {
   );
 };
 
-const inputs = [
-  slidebarAddTaskBox.title,
-  inputAddTaskBox.title,
-  todayAddTaskBox.title,
-];
+const inputs = [slidebarAddTaskBox.title, inputAddTaskBox.title, todayAddTaskBox.title];
 
 inputs.forEach((el) => {
   changePlaceholder(el);
@@ -92,32 +67,29 @@ inputs.forEach((el) => {
                     Date
 =============================================*/
 jalaliDatepicker.startWatch({
-  minDate: "attr",
+  minDate: 'attr'
 });
 
 const todayDate = new persianDate();
 function showDayOrDate(arr) {
-  if (typeof arr === "string") {
-    arr = arr.split("/");
+  if (typeof arr === 'string') {
+    arr = arr.split('/');
   }
 
   const d = new persianDate(arr);
 
-  const isToday =
-    d.year() === todayDate.year() &&
-    d.month() === todayDate.month() &&
-    d.date() === todayDate.date();
+  const isToday = d.year() === todayDate.year() && d.month() === todayDate.month() && d.date() === todayDate.date();
 
   if (isToday) {
-    return "امروز";
+    return 'امروز';
   }
 
-  const diff = d.diff(todayDate, "day");
+  const diff = d.diff(todayDate, 'day');
 
   if (Math.abs(diff) < 7) {
-    return d.format("dddd");
+    return d.format('dddd');
   }
-  return d.format("D MMMM YYYY");
+  return d.format('D MMMM YYYY');
 }
 
 function updateDateDisplay(date, textContent) {
@@ -128,73 +100,48 @@ function stupeDate(hiddenDate, pickDateBtnText, getcancelBTN) {
   const inputDate = document.getElementById(hiddenDate);
   const cancelBtn = document.getElementById(getcancelBTN);
 
-  inputDate.addEventListener("change", () => {
-    const dateArr = inputDate.value.split("/");
+  inputDate.addEventListener('change', () => {
+    const dateArr = inputDate.value.split('/');
     const year = Number(dateArr[0]);
     const mon = Number(dateArr[1]);
     const day = Number(dateArr[2]);
     const tarikh = new persianDate([year, mon, day]);
     updateDateDisplay(tarikh, pickDateBtnText);
-    cancelBtn.style.display = "block";
+    cancelBtn.style.display = 'block';
   });
 
-  cancelBtn.addEventListener("click", () => {
-    cancelBtn.style.display = "none";
-    inputDate.value = "";
-    document.getElementById(pickDateBtnText).textContent = "تاریخ";
+  cancelBtn.addEventListener('click', () => {
+    cancelBtn.style.display = 'none';
+    inputDate.value = '';
+    document.getElementById(pickDateBtnText).textContent = 'تاریخ';
   });
 }
 
 function restDate(hiddenInput) {
-  hiddenInput.value = "";
-  document.getElementById("slidebar-add-task-box-cancel-date").style.display =
-    "none";
-  document.getElementById("input-add-task-box-cancel-date").style.display =
-    "none";
-  document.getElementById("today-add-task-box-cancel-date").style.display =
-    "none";
+  hiddenInput.value = '';
+  document.getElementById('slidebar-add-task-box-cancel-date').style.display = 'none';
+  document.getElementById('input-add-task-box-cancel-date').style.display = 'none';
+  document.getElementById('today-add-task-box-cancel-date').style.display = 'none';
 
-  document.getElementById("slidebar-pickDateBtn__text").textContent = "تاریخ";
-  document.getElementById("input-pickDateBtn__text").textContent = "تاریخ";
-  document.getElementById("today-pickDateBtn__text").textContent = "تاریخ";
+  document.getElementById('slidebar-pickDateBtn__text').textContent = 'تاریخ';
+  document.getElementById('input-pickDateBtn__text').textContent = 'تاریخ';
+  document.getElementById('today-pickDateBtn__text').textContent = 'تاریخ';
 }
 
-stupeDate(
-  "slidebar-hiddenDate",
-  "slidebar-pickDateBtn__text",
-  "slidebar-add-task-box-cancel-date"
-);
-stupeDate(
-  "input-hiddenDate",
-  "input-pickDateBtn__text",
-  "input-add-task-box-cancel-date"
-);
-stupeDate(
-  "today-hiddenDate",
-  "today-pickDateBtn__text",
-  "today-add-task-box-cancel-date"
-);
+stupeDate('slidebar-hiddenDate', 'slidebar-pickDateBtn__text', 'slidebar-add-task-box-cancel-date');
+stupeDate('input-hiddenDate', 'input-pickDateBtn__text', 'input-add-task-box-cancel-date');
+stupeDate('today-hiddenDate', 'today-pickDateBtn__text', 'today-add-task-box-cancel-date');
 
 /*=============================================
               Priority Item
 =============================================*/
 function restPriority() {
-  const prioritySubmenuList = [
-    "slidebar-priority__submenu",
-    "input-priority__submenu",
-    "today-priority__submenu",
-  ];
+  const prioritySubmenuList = ['slidebar-priority__submenu', 'input-priority__submenu', 'today-priority__submenu'];
   for (let i = 0; i < prioritySubmenuList.length; i++) {
-    document
-      .getElementById(prioritySubmenuList[i])
-      .classList.remove("priority__submenu--active");
+    document.getElementById(prioritySubmenuList[i]).classList.remove('priority__submenu--active');
   }
 
-  const priorityBTNList = [
-    "#slidebar-priority--btn",
-    "#input-priority-btn",
-    "#today-priority-btn",
-  ];
+  const priorityBTNList = ['#slidebar-priority--btn', '#input-priority-btn', '#today-priority-btn'];
   for (let i = 0; i < priorityBTNList.length; i++) {
     document.querySelector(priorityBTNList[i]).innerHTML = `
         <svg class="add-task-box-option-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.7124 9.27144C17.0398 9.52515 17.0996 9.99625 16.8459 10.3237L13.9169 14.1037C13.7945 14.2616 13.6143 14.3641 13.4161 14.3886C13.2178 14.4131 13.018 14.3576 12.8609 14.2342L10.0426 12.0218L7.51139 15.3107C7.25876 15.639 6.78786 15.7003 6.45961 15.4477C6.13135 15.195 6.07004 14.7241 6.32267 14.3959L9.31567 10.5069C9.43775 10.3482 9.61816 10.245 9.81677 10.2201C10.0154 10.1952 10.2157 10.2508 10.3731 10.3744L13.1935 12.5883L15.6602 9.40491C15.9139 9.07749 16.385 9.01774 16.7124 9.27144Z" fill="currentcolor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M19.6671 3.09961C19.0193 3.09961 18.4951 3.62382 18.4951 4.27161C18.4951 4.91865 19.0196 5.44361 19.6671 5.44361C20.3146 5.44361 20.8391 4.91865 20.8391 4.27161C20.8391 3.62382 20.3149 3.09961 19.6671 3.09961ZM16.9951 4.27161C16.9951 2.7954 18.1909 1.59961 19.6671 1.59961C21.1433 1.59961 22.3391 2.7954 22.3391 4.27161C22.3391 5.74657 21.1436 6.94361 19.6671 6.94361C18.1906 6.94361 16.9951 5.74657 16.9951 4.27161Z" fill="currentcolor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M5.00342 5.60669C3.78045 6.82966 3.19946 8.87583 3.19946 12.3027C3.19946 15.7302 3.78046 17.7763 5.0034 18.9991C6.22635 20.222 8.2725 20.8027 11.6995 20.8027C15.127 20.8027 17.1731 20.222 18.3959 18.9992C19.6187 17.7763 20.1995 15.7302 20.1995 12.3027C20.1995 11.1971 20.1397 10.2276 20.0136 9.37898C19.9527 8.96926 20.2355 8.58777 20.6452 8.52688C21.0549 8.466 21.4364 8.74878 21.4973 9.15849C21.6372 10.0999 21.6995 11.1464 21.6995 12.3027C21.6995 15.8132 21.1242 18.3921 19.4565 20.0598C17.7889 21.7275 15.21 22.3027 11.6995 22.3027C8.18943 22.3027 5.61058 21.7275 3.94278 20.0598C2.27497 18.3922 1.69946 15.8133 1.69946 12.3027C1.69946 8.79264 2.27498 6.21381 3.94276 4.54603C5.61054 2.87825 8.18936 2.30273 11.6995 2.30273C12.8345 2.30273 13.8631 2.36296 14.7902 2.49751C15.2001 2.557 15.4842 2.93753 15.4247 3.34745C15.3652 3.75737 14.9847 4.04145 14.5747 3.98196C13.7379 3.86051 12.7844 3.80273 11.6995 3.80273C8.27256 3.80273 6.22639 4.38372 5.00342 5.60669Z" fill="currentcolor"></path></svg>
@@ -202,49 +149,31 @@ function restPriority() {
         `;
   }
 
-  document.querySelectorAll(".priority__submenu-item").forEach((item) => {
-    item.classList.remove("priority__submenu-item--active");
+  document.querySelectorAll('.priority__submenu-item').forEach((item) => {
+    item.classList.remove('priority__submenu-item--active');
   });
-  document.querySelectorAll("#priority-4").forEach((priority) => {
-    priority.classList.add("priority__submenu-item--active");
+  document.querySelectorAll('#priority-4').forEach((priority) => {
+    priority.classList.add('priority__submenu-item--active');
   });
 }
 
-const priorityItem = [
-  "#priority-1",
-  "#priority-2",
-  "#priority-3",
-  "#priority-4",
-];
+const priorityItem = ['#priority-1', '#priority-2', '#priority-3', '#priority-4'];
 document.querySelectorAll(priorityItem).forEach((prioritySubmenuItem) => {
-  prioritySubmenuItem.addEventListener("click", () => {
+  prioritySubmenuItem.addEventListener('click', () => {
     for (let i = 0; i < priorityItem.length; i++) {
-      document
-        .querySelector(priorityItem[i])
-        .classList.remove("priority__submenu-item--active");
+      document.querySelector(priorityItem[i]).classList.remove('priority__submenu-item--active');
     }
 
-    const prioritySubmenuList = [
-      "slidebar-priority__submenu",
-      "input-priority__submenu",
-      "today-priority__submenu",
-    ];
+    const prioritySubmenuList = ['slidebar-priority__submenu', 'input-priority__submenu', 'today-priority__submenu'];
     for (let i = 0; i < prioritySubmenuList.length; i++) {
-      document
-        .getElementById(prioritySubmenuList[i])
-        .classList.remove("priority__submenu--active");
+      document.getElementById(prioritySubmenuList[i]).classList.remove('priority__submenu--active');
     }
 
-    prioritySubmenuItem.classList.add("priority__submenu-item--active");
+    prioritySubmenuItem.classList.add('priority__submenu-item--active');
 
-    const priorityBTN = [
-      "slidebar-priority--btn",
-      "input-priority-btn",
-      "today-priority-btn",
-    ];
+    const priorityBTN = ['slidebar-priority--btn', 'input-priority-btn', 'today-priority-btn'];
     for (let i = 0; i < priorityBTN.length; i++) {
-      document.getElementById(priorityBTN[i]).innerHTML =
-        prioritySubmenuItem.innerHTML;
+      document.getElementById(priorityBTN[i]).innerHTML = prioritySubmenuItem.innerHTML;
     }
   });
 });
@@ -252,58 +181,49 @@ function toggleMenu(button, menu) {
   const menuSelector = document.getElementById(menu);
   const buttonSelector = document.getElementById(button);
 
-  document.getElementById(button).addEventListener("click", () => {
-    document.getElementById(menu).classList.toggle("priority__submenu--active");
+  document.getElementById(button).addEventListener('click', () => {
+    document.getElementById(menu).classList.toggle('priority__submenu--active');
   });
 
-  document.querySelector(".main").addEventListener("click", (e) => {
-    if (
-      !menuSelector.contains(e.target) &&
-      !buttonSelector.contains(e.target)
-    ) {
-      menuSelector.classList.remove("priority__submenu--active");
+  document.querySelector('.main').addEventListener('click', (e) => {
+    if (!menuSelector.contains(e.target) && !buttonSelector.contains(e.target)) {
+      menuSelector.classList.remove('priority__submenu--active');
     }
   });
 }
 
-toggleMenu("slidebar-priority--btn", "slidebar-priority__submenu");
-toggleMenu("input-priority-btn", "input-priority__submenu");
-toggleMenu("today-priority-btn", "today-priority__submenu");
+toggleMenu('slidebar-priority--btn', 'slidebar-priority__submenu');
+toggleMenu('input-priority-btn', 'input-priority__submenu');
+toggleMenu('today-priority-btn', 'today-priority__submenu');
 
 /*=============================================
                   Label Item
 =============================================*/
 function saveLabel(labels) {
-  localStorage.setItem("labels", JSON.stringify(labels));
+  localStorage.setItem('labels', JSON.stringify(labels));
 }
 function loadLabel() {
-  var labels = localStorage.getItem("labels");
+  var labels = localStorage.getItem('labels');
   return labels ? JSON.parse(labels) : [];
 }
 function addLabelDOM(sectionName) {
   const LabelsContainer = document.getElementById(`${sectionName}-labels`);
-  const LabelNotFound = document.getElementById(
-    `${sectionName}-label-not-found`
-  );
+  const LabelNotFound = document.getElementById(`${sectionName}-label-not-found`);
   const AddLabelBtn = document.getElementById(`${sectionName}-add-label__btn`);
-  const SearchBoxText = document.getElementById(
-    `${sectionName}-label__search-box`
-  );
+  const SearchBoxText = document.getElementById(`${sectionName}-label__search-box`);
 
   const labels = loadLabel();
-  const filteredLabel = labels.filter((label) =>
-    label.toLowerCase().includes(SearchBoxText.value.trim().toLowerCase())
-  );
+  const filteredLabel = labels.filter((label) => label.toLowerCase().includes(SearchBoxText.value.trim().toLowerCase()));
 
-  if (!filteredLabel.length && SearchBoxText.value.trim() !== "") {
-    LabelNotFound.style.display = "inline";
-    AddLabelBtn.style.display = "flex";
+  if (!filteredLabel.length && SearchBoxText.value.trim() !== '') {
+    LabelNotFound.style.display = 'inline';
+    AddLabelBtn.style.display = 'flex';
   } else {
-    LabelNotFound.style.display = "none";
-    AddLabelBtn.style.display = "none";
+    LabelNotFound.style.display = 'none';
+    AddLabelBtn.style.display = 'none';
   }
 
-  let html = "";
+  let html = '';
   filteredLabel.forEach((e) => {
     html += `
         <label class="label">
@@ -323,44 +243,35 @@ const LabelSubmenu = document.getElementById(`input-label__submenu`);
 function setupLabel(sectionName, AddTaskBox) {
   const LabelBTN = document.getElementById(`${sectionName}-label--btn`);
   const LabelSubmenu = document.getElementById(`${sectionName}-label__submenu`);
-  const SearchBoxText = document.getElementById(
-    `${sectionName}-label__search-box`
-  );
+  const SearchBoxText = document.getElementById(`${sectionName}-label__search-box`);
   const AddLabelBtn = document.getElementById(`${sectionName}-add-label__btn`);
-  const AddLabelText = document.getElementById(
-    `${sectionName}-add-label__text`
-  );
+  const AddLabelText = document.getElementById(`${sectionName}-add-label__text`);
   const LabelsContainer = document.getElementById(`${sectionName}-labels`);
 
-  LabelBTN.addEventListener("click", () => {
-    document.querySelector(".main").addEventListener("click", (e) => {
+  LabelBTN.addEventListener('click', () => {
+    document.querySelector('.main').addEventListener('click', (e) => {
       if (LabelBTN.contains(e.target)) {
-        LabelSubmenu.classList.add("label__submenu--open");
+        LabelSubmenu.classList.add('label__submenu--open');
       } else if (!LabelSubmenu.contains(e.target)) {
-        LabelSubmenu.classList.remove("label__submenu--open");
+        LabelSubmenu.classList.remove('label__submenu--open');
       }
     });
     addLabelDOM(sectionName);
 
     const selectedLabels = AddTaskBox.selectedLabels || [];
 
-    document.querySelectorAll(".label").forEach((labelEl) => {
-      const labelText = labelEl
-        .querySelector(".label__text-label")
-        .innerText.trim();
-      const checkbox = labelEl.querySelector(".label__checkbox");
+    document.querySelectorAll('.label').forEach((labelEl) => {
+      const labelText = labelEl.querySelector('.label__text-label').innerText.trim();
+      const checkbox = labelEl.querySelector('.label__checkbox');
       checkbox.checked = selectedLabels.includes(labelText);
     });
 
     LabelsContainer.addEventListener(
-      "change",
+      'change',
       (e) => {
-        if (!e.target.classList.contains("label__checkbox")) return;
+        if (!e.target.classList.contains('label__checkbox')) return;
 
-        const labelText = e.target
-          .closest(".label")
-          .querySelector(".label__text-label")
-          .innerText.trim();
+        const labelText = e.target.closest('.label').querySelector('.label__text-label').innerText.trim();
 
         if (e.target.checked) {
           if (!selectedLabels.includes(labelText)) {
@@ -374,49 +285,48 @@ function setupLabel(sectionName, AddTaskBox) {
         }
         AddTaskBox.selectedLabels = selectedLabels;
         if (AddTaskBox.selectedLabels.length) {
-          LabelBTN.style.borderColor = "var(--color-primary-300)";
-          LabelBTN.style.background = "var(--color-primary-100)";
-          LabelBTN.style.color = "var(--color-primary-300)";
+          LabelBTN.style.borderColor = 'var(--color-primary-300)';
+          LabelBTN.style.background = 'var(--color-primary-100)';
+          LabelBTN.style.color = 'var(--color-primary-300)';
         } else {
-          LabelBTN.style.borderColor = "var(--color-neutral-500)";
-          LabelBTN.style.background = "transparent";
-          LabelBTN.style.color = "var(--color-neutral-700)";
+          LabelBTN.style.borderColor = 'var(--color-neutral-500)';
+          LabelBTN.style.background = 'transparent';
+          LabelBTN.style.color = 'var(--color-neutral-700)';
         }
       },
       { once: false }
     );
   });
 
-  SearchBoxText.addEventListener("input", () => {
+  SearchBoxText.addEventListener('input', () => {
     AddLabelText.textContent = SearchBoxText.value;
     addLabelDOM(sectionName);
   });
 
-  AddLabelBtn.addEventListener("click", () => {
+  AddLabelBtn.addEventListener('click', () => {
     const labels = loadLabel();
     labels.push(AddLabelText.textContent.trim());
     saveLabel(labels);
     addLabelDOM(sectionName);
+    LabelsContainer.style.display = 'block';
   });
 }
 
-setupLabel("slidebar", slidebarAddTaskBox);
-setupLabel("input", inputAddTaskBox);
-setupLabel("today", todayAddTaskBox);
+setupLabel('slidebar', slidebarAddTaskBox);
+setupLabel('input', inputAddTaskBox);
+setupLabel('today', todayAddTaskBox);
 
 function restLabel() {
-  const arr = ["slidebar-label--btn", "input-label--btn", "today-label--btn"];
-  document
-    .getElementById("slidebar-label__submenu")
-    .classList.remove("label__submenu--open");
+  const arr = ['slidebar-label--btn', 'input-label--btn', 'today-label--btn'];
+  document.getElementById('slidebar-label__submenu').classList.remove('label__submenu--open');
   for (let i = 0; i < arr.length; i++) {
     const LabelBTN = document.getElementById(arr[i]);
     slidebarAddTaskBox.selectedLabels = [];
     inputAddTaskBox.selectedLabels = [];
 
-    LabelBTN.style.borderColor = "var(--color-neutral-500)";
-    LabelBTN.style.background = "transparent";
-    LabelBTN.style.color = "var(--color-neutral-700)";
+    LabelBTN.style.borderColor = 'var(--color-neutral-500)';
+    LabelBTN.style.background = 'transparent';
+    LabelBTN.style.color = 'var(--color-neutral-700)';
   }
 }
 /*=============================================
@@ -428,12 +338,10 @@ function setupTaskBox(addTaskBox) {
   const description = addTaskBox.description;
   const hiddenDate = addTaskBox.hiddenDate;
 
-  addBTN.addEventListener("click", () => {
+  addBTN.addEventListener('click', () => {
     const taskTitle = title;
     const taskDescription = description;
-    const taskPriority = document.querySelector(
-      ".priority__submenu-item--active"
-    );
+    const taskPriority = document.querySelector('.priority__submenu-item--active');
 
     const newTask = {
       id: Date.now(),
@@ -442,20 +350,14 @@ function setupTaskBox(addTaskBox) {
       completed: false,
       completedAt: false,
       dueDate: hiddenDate.value,
-      priority: taskPriority.getAttribute("id"),
-      label: inputAddTaskBox.selectedLabels.length
-        ? inputAddTaskBox.selectedLabels
-        : todayAddTaskBox.selectedLabels.length
-        ? todayAddTaskBox.selectedLabels
-        : slidebarAddTaskBox.selectedLabels.length
-        ? slidebarAddTaskBox.selectedLabels
-        : [],
+      priority: taskPriority.getAttribute('id'),
+      label: inputAddTaskBox.selectedLabels.length ? inputAddTaskBox.selectedLabels : todayAddTaskBox.selectedLabels.length ? todayAddTaskBox.selectedLabels : slidebarAddTaskBox.selectedLabels.length ? slidebarAddTaskBox.selectedLabels : []
     };
 
     if (taskTitle.value) {
       addNewTasks(newTask);
-      taskTitle.value = "";
-      taskDescription.value = "";
+      taskTitle.value = '';
+      taskDescription.value = '';
       restPriority();
       restDate(hiddenDate);
       restLabel();
@@ -466,9 +368,9 @@ function setupTaskBox(addTaskBox) {
         renderAllTasksToday();
       }
       if (loadTasks().length && addTaskBox !== inputAddTaskBox) {
-        inputAboutPage.style.display = "none";
-        inputTaskContainer.style.display = "block";
-        inputTaskAddBTN.style.display = "flex";
+        inputAboutPage.style.display = 'none';
+        inputTaskContainer.style.display = 'block';
+        inputTaskAddBTN.style.display = 'flex';
       }
     }
   });
@@ -484,40 +386,38 @@ setupTaskBox(todayAddTaskBox);
 =============================================*/
 
 const restTaskBox = function (addTaskBox) {
-  addTaskBox.title.value = "";
-  addTaskBox.description.value = "";
+  addTaskBox.title.value = '';
+  addTaskBox.description.value = '';
   restDate(addTaskBox.hiddenDate);
   restPriority();
   restLabel();
 };
 
-slidebarAddTaskBox.closeBTN.addEventListener("click", () => {
-  $.querySelector(".add-task-box__warp").classList.remove(
-    "add-task-box__warp--open"
-  );
+slidebarAddTaskBox.closeBTN.addEventListener('click', () => {
+  $.querySelector('.add-task-box__warp').classList.remove('add-task-box__warp--open');
 
   // rest
   restTaskBox(slidebarAddTaskBox);
 });
 
-inputAddTaskBox.closeBTN.addEventListener("click", () => {
-  inputAddTaskBox.container.style.display = "none";
+inputAddTaskBox.closeBTN.addEventListener('click', () => {
+  inputAddTaskBox.container.style.display = 'none';
   if (!loadTasks().length) {
-    inputAboutPage.style.display = "block";
+    inputAboutPage.style.display = 'block';
     return;
   }
-  inputTaskAddBTN.style.display = "flex";
+  inputTaskAddBTN.style.display = 'flex';
 
   // rest
   restTaskBox(inputAddTaskBox);
 });
 
-todayAddTaskBox.closeBTN.addEventListener("click", () => {
-  todayAddTaskBox.container.style.display = "none";
+todayAddTaskBox.closeBTN.addEventListener('click', () => {
+  todayAddTaskBox.container.style.display = 'none';
   if (!loadTasksToday().length) {
-    todayAboutPage.style.display = "block";
+    todayAboutPage.style.display = 'block';
   } else {
-    todayTaskAddBTN.style.display = "flex";
+    todayTaskAddBTN.style.display = 'flex';
   }
 
   // rest
