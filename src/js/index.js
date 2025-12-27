@@ -106,10 +106,7 @@ function addTaskToDOM(task, taskWarp = "#input-task-container") {
                   ${
                     showDayOrDateTask(task.dueDate) !== "۱ فروردین ۰"
                       ? `
-                      <div class="task-date__warp" style="color: ${showDayOrDateTask(
-                        task.dueDate,
-                        true
-                      )};">
+                      <div class="task-date__warp" style="color: ${showDayOrDateTask(task.dueDate, true)};">
                       <svg
                         class="task-date__icon handle"
                         width="24"
@@ -185,7 +182,6 @@ function addTaskToDOM(task, taskWarp = "#input-task-container") {
                         `
                       : ""
                   }
-
                   </div>
                 </div>
               </div>

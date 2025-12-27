@@ -54,7 +54,6 @@ sidebarListAddTaskBTN.addEventListener('click', () => {
   $.getElementById('slidebar-add-task-box__bg').addEventListener('click', () => {
     slidebarAddTaskBoxWarp.classList.remove('add-task-box__warp--open');
   });
-  inputAddTaskBox.container.style.display = 'none';
   restTaskBox(slidebarAddTaskBox);
 });
 // --- SEARCH ------------------------------------------------------------------

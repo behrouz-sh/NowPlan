@@ -15,7 +15,7 @@
   background-color: var(--color-neutral-300);
 
   overscroll-behavior: contain;
-  scrollbar-width: .4rem;
+  scrollbar-width: 0.4rem;
   scrollbar-color: var(--color-neutral-300) transparent;
 }
 
@@ -26,7 +26,7 @@
 
 .sidebar--close .sidebar__open-close-btn-icon {
   position: absolute;
-  right: 410px;
+  right: 41rem;
 
   transition: 0.3s;
   transform: rotate(90deg);
@@ -56,7 +56,7 @@
 
   transition: 0.3s;
 
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
 
   column-gap: 1.6rem;
 }
@@ -88,13 +88,13 @@
   transition: 0.3s;
   transform: rotate(-90deg);
 
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
 }
 
 .sidebar__open-btn-icon {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 2.4rem;
+  right: 2.4rem;
 
   display: none;
 
@@ -129,8 +129,8 @@
 
   transition: 0.3s;
 
-  border-radius: var(--radius-md);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm);
 
   column-gap: 2rem;
 }
@@ -185,7 +185,7 @@
   transition: 0.3s;
 
   color: var(--color-neutral-800);
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
 }
 
 .sidebar__project-warp:hover {
@@ -201,7 +201,7 @@
   display: flex;
   align-items: center;
 
-  column-gap: .2rem;
+  column-gap: 0.2rem;
 }
 
 .sidebar__project-arrow-icon,
@@ -212,7 +212,7 @@
 
   transition: 0.3s;
 
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
 }
 
 .sidebar__project-arrow-icon:hover,
@@ -237,7 +237,7 @@
   transition: 0.3s;
 
   color: var(--color-neutral-800);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
 }
 
 .sidebar__project-list-item:hover {
@@ -263,7 +263,6 @@
   transition: 0.3s;
 
   color: var(--color-neutral-600);
-
 }
 
 .sidebar__project-list-more-icon {
@@ -273,7 +272,7 @@
 
   transition: 0.3s;
 
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
 }
 
 .sidebar__project-list-more-icon:hover {

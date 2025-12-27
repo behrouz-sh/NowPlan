@@ -1,3 +1,5 @@
+const completedAboutPageBTN = document.getElementById("add-task-box--completed");
+
 const time = function () {
   const date = new persianDate(new Date());
   return [date.format("HH:mm"), date.format("YYYY/MM/DD")];
@@ -34,8 +36,7 @@ function addTaskCompletedToDOM(task) {
         ${task.completedAt[1]}
         </span>
     </div>`;
-  $.querySelector(".task__completed").innerHTML =
-    $.querySelector(".task__completed").innerHTML + taskHTML;
+  $.querySelector(".task__completed").innerHTML = $.querySelector(".task__completed").innerHTML + taskHTML;
 }
 
 function renderAllTasksCompleted() {
@@ -48,71 +49,56 @@ if (loadCompleted().length) {
   $.querySelector("#completed-about-page").style.display = "none";
   renderAllTasksCompleted();
 }
-document.querySelector(".task__completed .task").style.display = "none";
+document.getElementById("completed-task-container").style.display = "none";
 
-document
-  .getElementById("completed-task-container")
-  .addEventListener("click", (e) => {
-    const taskEl = e.target.closest(".task");
-    const id = taskEl.dataset.taskId;
-    const task = loadCompleted().find((t) => String(t.id) === String(id));
-    document.querySelector(".box-completed-details-warp").style.display =
-      "block";
-    document.querySelector(
-      ".box-completed-details__title"
-    ).textContent = `عنوان کار:
+document.getElementById("completed-task-container").addEventListener("click", (e) => {
+  const taskEl = e.target.closest(".task");
+  const id = taskEl.dataset.taskId;
+  const task = loadCompleted().find((t) => String(t.id) === String(id));
+  document.querySelector(".box-completed-details-warp").style.display = "block";
+  document.querySelector(".box-completed-details__title").textContent = `عنوان کار:
     ${task.title}
     `;
 
-    if (task.description !== "") {
-      document.querySelector(
-        ".box-completed-details__description-warp"
-      ).style.display = "block";
+  if (task.description !== "") {
+    document.querySelector(".box-completed-details__description-warp").style.display = "block";
 
-      document.querySelector(
-        ".box-completed-details__description"
-      ).textContent = task.description;
-    }
+    document.querySelector(".box-completed-details__description").textContent = task.description;
+  }
 
-    const boxCompletedDetailsPriority = document.createElement("div");
-    boxCompletedDetailsPriority.classList.add(
-      "box-completed-details__priority-tags"
-    );
-    switch (task.priority) {
-      case "priority-1":
-        boxCompletedDetailsPriority.textContent = "اولویت اول";
-        boxCompletedDetailsPriority.style.background =
-          "rgba(254, 226, 226, 0.5)";
-        boxCompletedDetailsPriority.style.color = "#EF4444";
-        break;
+  const boxCompletedDetailsPriority = document.createElement("div");
+  boxCompletedDetailsPriority.classList.add("box-completed-details__priority-tags");
+  switch (task.priority) {
+    case "priority-1":
+      boxCompletedDetailsPriority.textContent = "اولویت اول";
+      boxCompletedDetailsPriority.style.background = "rgba(254, 226, 226, 0.5)";
+      boxCompletedDetailsPriority.style.color = "#EF4444";
+      break;
 
-      case "priority-2":
-        boxCompletedDetailsPriority.textContent = "اولویت دوم";
-        boxCompletedDetailsPriority.style.background =
-          "rgba(250, 204, 21, 0.12)";
-        boxCompletedDetailsPriority.style.color = "#FACC15";
-        break;
+    case "priority-2":
+      boxCompletedDetailsPriority.textContent = "اولویت دوم";
+      boxCompletedDetailsPriority.style.background = "rgba(250, 204, 21, 0.12)";
+      boxCompletedDetailsPriority.style.color = "#FACC15";
+      break;
 
-      case "priority-3":
-        boxCompletedDetailsPriority.textContent = "اولویت سوم";
-        boxCompletedDetailsPriority.style.background =
-          "rgba(59, 130, 246, 0.05)";
-        boxCompletedDetailsPriority.style.color = "#3B82F6";
-        break;
+    case "priority-3":
+      boxCompletedDetailsPriority.textContent = "اولویت سوم";
+      boxCompletedDetailsPriority.style.background = "rgba(59, 130, 246, 0.05)";
+      boxCompletedDetailsPriority.style.color = "#3B82F6";
+      break;
 
-      case "priority-4":
-        boxCompletedDetailsPriority.textContent = "بدون اولویت";
-        boxCompletedDetailsPriority.style.background =
-          "rgba(107, 114, 128, 0.12)";
-        boxCompletedDetailsPriority.style.color = "#6b7280";
-    }
-    const boxCompletedDetailsWarp = document.querySelector(
-      ".box-completed-details__priority-tags-warp"
-    );
-    boxCompletedDetailsWarp.innerHTML = "";
-    boxCompletedDetailsWarp.append(boxCompletedDetailsPriority);
-    for (let i = 0; i <   task.label.length; i++) {
-      boxCompletedDetailsWarp.innerHTML += `
+    case "priority-4":
+      boxCompletedDetailsPriority.textContent = "بدون اولویت";
+      boxCompletedDetailsPriority.style.background = "rgba(107, 114, 128, 0.12)";
+      boxCompletedDetailsPriority.style.color = "#6b7280";
+  }
+  const boxCompletedDetailsWarp = document.querySelector(".box-completed-details__priority-tags-warp");
+  document.querySelector(".box-completed-details__completedAt").textContent = `${task.completedAt[0]} -- ${task.completedAt[1]}`;
+
+  boxCompletedDetailsWarp.innerHTML = "";
+  boxCompletedDetailsWarp.append(boxCompletedDetailsPriority);
+  for (let i = 0; i < task.label.length; i++) {
+    boxCompletedDetailsWarp.innerHTML += `
 
   <div class="box-completed-details__priority-tags">
   <svg class="add-task-box-option-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -124,15 +110,9 @@ document
   ${task.label[i]}</div>
       
       `;
-    }
-    document.querySelector(
-      ".box-completed-details__completedAt"
-    ).textContent = `${task.completedAt[0]} -- ${task.completedAt[1]}`;
-  });
+  }
+});
 
-document
-  .getElementById("box-completed-details__bg-layer")
-  .addEventListener("click", () => {
-    document.querySelector(".box-completed-details-warp").style.display =
-      "none";
-  });
+document.getElementById("box-completed-details__bg-layer").addEventListener("click", () => {
+  document.querySelector(".box-completed-details-warp").style.display = "none";
+});

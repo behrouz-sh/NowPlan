@@ -1,60 +1,72 @@
-@media (max-width: 1400px) {
+@media(max-width: 1400px) {
   .container {
-    width: 800px;
+    width: 80rem;
   }
+
   .main--open {
     margin-right: 40rem;
   }
+
   .sidebar--open {
     width: 40rem;
   }
 }
 
-@media (max-width: 1200px) {
+@media(max-width: 1200px) {
   .container {
-    width: 670px;
+    width: 67rem;
   }
+
   .main--open {
     margin-right: 32rem;
   }
+
   .sidebar--open {
     width: 32rem;
   }
 }
 
-@media (max-width: 992px) {
+@media(max-width: 992px) {
   .container {
     width: 52.4rem;
   }
+
   .main--open {
     margin-right: 24rem;
   }
+
   .sidebar--open {
     width: 24rem;
   }
+
   #slidebar-add-task-box,
   .search-box,
   .box-completed-details {
     margin: auto 4rem;
   }
 }
-@media (max-width: 768px) {
+
+@media(max-width: 768px) {
   .container {
     width: 100%;
     padding: 0 4rem;
   }
+
   .main--open {
-    margin-right: 0;
     width: 100%;
+    margin-right: 0;
   }
+
   .sidebar--open {
     width: 80vw;
   }
+
   .sidebar__open-btn-icon {
-    right: 12px;
     z-index: 50;
-    top: 12px;
+    top: 1.2rem;
+    right: 1.2rem;
   }
+
   #slidebar-add-task-box,
   .search-box,
   .box-completed-details {
@@ -62,49 +74,67 @@
   }
 }
 
-@media (max-width: 576px) {
+@media(max-width: 576px) {
   .container {
     width: 100%;
     padding: 0 2rem;
   }
+
   .about-page-btn {
     width: 100%;
     margin-top: 1.6rem;
   }
+
   .add-task-box-option-warp > div {
     display: flex;
     flex-grow: 1;
   }
+
   .add-task-box-option {
-    min-width: 14rem;
     flex-grow: 1;
+
+    min-width: 14rem;
   }
+
   .add-task-box-btns {
     flex-direction: column;
   }
+
   .add-task-box-btn {
     width: 100%;
   }
+
   .priority {
     position: static;
   }
+
   .priority__submenu {
-    margin: auto;
-    inset: 0;
-    width: 400px;
     height: fit-content;
+    margin: auto 2.4rem;
+
+    inset: 0;
   }
+
   .priority__submenu::after {
     display: block;
   }
+
   .page {
     padding: 0;
   }
+
   .label__submenu {
-    position: fixed !important;
-    right: 0;
-    left: 0 !important;
-    bottom: 0;
-    border-radius: 1.6rem 1.6rem 0 0 !important;
+    position: fixed;
+
+    height: fit-content;
+    margin: auto 2.4rem;
+
+    border-radius: var(--radius-lg);
+
+    inset: 0;
+  }
+
+  .label__submenu::after {
+    display: block;
   }
 }

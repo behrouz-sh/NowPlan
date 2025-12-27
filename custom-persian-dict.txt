@@ -1,4 +1,5 @@
 atsign
+currentcolor
 jalalidatepicker
 slidebar
 textlabel

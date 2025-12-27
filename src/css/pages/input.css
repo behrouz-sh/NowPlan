@@ -7,9 +7,11 @@
                 Tasks
 =======================================
 */
+
 .task-container {
   display: none;
   flex-direction: column;
+
   margin: 2.4rem 0;
 }
 
@@ -22,32 +24,35 @@
 
   transition: 0.3s;
 
-  border-bottom: 1px solid var(--color-neutral-300);
+  border-bottom: 0.1rem solid var(--color-neutral-300);
 }
 
 .task:hover {
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
   background-color: var(--color-neutral-200);
 }
+
 .task__warp {
   display: flex;
   align-items: start;
 
   column-gap: 0.8rem;
 }
+
 .task__tick-Square-icon {
   min-width: 2rem;
   min-height: 2rem;
 
   cursor: pointer;
-
-  border-radius: 0.8rem;
-  background-color: var(--color-neutral-100);
   transition: 0.3s;
+
+  border-radius: var(--radius-sm);
+  background-color: var(--color-neutral-100);
 }
 
 .task__tick-icon {
   display: none;
+
   transition: 0.3s;
 }
 
@@ -70,9 +75,15 @@
   font-size: 1.4rem;
   font-weight: var(--font-weight-medium);
 
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+
   margin-bottom: 0.4rem;
 
   color: var(--color-neutral-700);
+
+  -webkit-line-clamp: 2;
 }
 
 .task__icons {
@@ -88,18 +99,22 @@
 }
 
 .task__icon:hover {
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
   background-color: var(--color-neutral-300);
 }
+
 .task-date__warp {
   display: flex;
   align-items: center;
+
   column-gap: 0.2rem;
 }
+
 .task-date__icon {
   width: 2rem;
   height: 2rem;
 }
+
 .task-date__text {
   font-size: 1.4rem;
 }
@@ -122,7 +137,7 @@
   transition: 0.3s;
 
   color: var(--color-primary-400);
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
 }
 
 .task__add:hover .task__add-icon {

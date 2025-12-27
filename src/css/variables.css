@@ -33,26 +33,19 @@
 
   --line-height-normal: 1.5;
 
-  /* Spacing Scale */
-  /* --space-2: 2px;
-  --space-4: 4px;
-  --space-6: 6px;
-  --space-8: 8px;
-  --space-12: 12px;
-  --space-16: 16px;
-  --space-24: 24px;
-  --space-32: 32px;
-  --space-64: 64px; */
-
   /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-  --radius-full: 999px;
+  --radius-vsm: .4rem;
+  --radius-sm: .8rem;
+  --radius-md: 1.2rem;
+  --radius-lg: 1.6rem;
+  --radius-xlg: 2.4rem;
+  --radius-xxl: 3.2rem;
+
+
+  --radius-full: 99rem;
 
   /* Shadows */
-  --shadow-sm: 0px 20px 20px 0px rgba(237, 239, 243, 0.3);
-  --shadow-md: 0px 20px 20px 0px rgba(237, 239, 243, 0.5);
-  --shadow-lg: 0px 20px 20px 0px rgba(237, 239, 243, 0.8);
-  
+  --shadow-sm: 0 2rem 2rem 0 rgba(237, 239, 243, 0.3);
+  --shadow-md: 0 2rem 2rem 0 rgba(237, 239, 243, 0.5);
+  --shadow-lg: 0 2rem 2rem 0 rgba(237, 239, 243, 0.8);
 }

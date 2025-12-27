@@ -11,15 +11,16 @@
 
   padding: 2.4rem;
 
-  border: 2px solid var(--color-neutral-400);
-  border-radius: 3.2rem;
+  border: 0.2rem solid var(--color-neutral-400);
+  border-radius: var(--radius-xxl);
   background: var(--color-neutral-100);
 }
 
 #slidebar-add-task-box {
-  display: block;
   position: absolute;
   z-index: 100;
+
+  display: block;
 
   max-width: 92rem;
   height: fit-content;
@@ -74,8 +75,8 @@
   transition: 0.3s;
 
   color: var(--color-neutral-700);
-  border: 1px solid var(--color-neutral-500);
-  border-radius: 0.8rem;
+  border: 0.2rem solid var(--color-neutral-500);
+  border-radius: var(--radius-sm);
   background-color: transparent;
 
   column-gap: 0.8rem;
@@ -98,7 +99,7 @@
   transition: 0.3s;
 
   color: inherit;
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
 }
 
 .add-task-box-cancel-icon:hover {
@@ -108,6 +109,7 @@
 .add-task-box-btns {
   display: flex;
   align-items: center;
+
   gap: 0.8rem;
 }
 
@@ -158,14 +160,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
   overflow: hidden;
   flex-direction: column;
 
-  width: 150%;
+  max-width: 150%;
   margin-top: 0.8rem;
 
   transition: 0.3s;
 
-  border: 1px solid var(--color-neutral-500);
-  border-radius: 1.6rem;
-  box-shadow: 0px 8px 16px 8px rgba(0, 0, 0, 0.06);
+  border: 0.1rem solid var(--color-neutral-500);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .priority__submenu::after {
@@ -218,9 +220,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 .label__submenu {
   position: absolute;
-  z-index: 54;
+  z-index: 100;
 
   display: none;
+  overflow: hidden;
   align-items: center;
   flex-direction: column;
 
@@ -231,13 +234,30 @@ input[type='date']::-webkit-calendar-picker-indicator {
   padding: 0.8rem;
 
   color: var(--color-neutral-700);
-  border: 1px solid var(--color-neutral-500);
-  border-radius: 1.2rem;
+  border: 0.1rem solid var(--color-neutral-500);
+  border-radius: var(--radius-md);
   background-color: var(--color-neutral-100);
-  box-shadow: 0px 8px 16px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-md);
 
   row-gap: 0.8rem;
   column-gap: 0.8rem;
+}
+
+.label__submenu::after {
+  position: fixed;
+  z-index: -1;
+
+  display: block;
+
+  width: 100vw;
+  height: 100vh;
+
+  content: ' ';
+
+  background-color: rgba(183, 186, 196, 0.5);
+  background-color: #3a36a8;
+  inset: 0;
+  backdrop-filter: blur(0.4rem);
 }
 
 .label__submenu--open {
@@ -250,12 +270,12 @@ input[type='date']::-webkit-calendar-picker-indicator {
   width: 100%;
   padding: 0.8rem;
 
-  border: 1px solid var(--color-neutral-600);
-  border-radius: 0.8rem;
+  border: 0.1rem solid var(--color-neutral-600);
+  border-radius: var(--radius-sm);
 }
 
 .labels {
-  display: none;
+  display: block;
   overflow-x: scroll;
   flex-direction: column;
 
@@ -273,7 +293,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   cursor: pointer;
   user-select: none;
 
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
 }
 
 .label:hover {
@@ -309,7 +329,7 @@ input[type='checkbox'] {
   cursor: pointer;
   transition: 0.3s;
 
-  border-radius: 0.4rem;
+  border-radius: var(--radius-vsm);
   background-color: var(--color-neutral-400);
 
   appearance: none;
@@ -330,14 +350,14 @@ input[type='checkbox']::after {
   content: '';
   transition: 0.3s;
 
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
   background-color: transparent;
   background-color: #3a36a8;
 }
 
 input[type='checkbox']:checked {
-  border: 1px solid var(--color-neutral-500);
-  border-radius: 1.6rem;
+  border: 0.1rem solid var(--color-neutral-500);
+  border-radius: var(--radius-lg);
   background-color: var(--color-neutral-300);
 }
 
@@ -363,7 +383,7 @@ input[type='checkbox']:checked::after {
   user-select: none;
 
   color: var(--color-neutral-100);
-  border-radius: 0.8rem;
+  border-radius: var(--radius-sm);
   background-color: var(--color-primary-300);
 
   column-gap: 0.8rem;

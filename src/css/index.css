@@ -1,19 +1,19 @@
-@import url(./typography.css); /* ok*/
-@import url(./variables.css); /* ok*/
-@import url(./base.css); /* ok*/
-@import url(../css/components/sidebar.css); /* ok*/
-@import url(../css/components/buttons.css); /* ok*/
-@import url(../css/components/about-page.css); /* ok*/
-@import url(../css/components/add-task-box.css); /* ok*/
-@import url(../css/components/search-box.css); /* ok*/
-@import url(../css/vendor/jalalidatepicker.min.css); /* ok*/
+@import url(./typography.css); /* ok */
+@import url(./variables.css); /* ok */
+@import url(./base.css); /* ok */
+@import url(../css/components/sidebar.css); /* ok */
+@import url(../css/components/buttons.css); /* ok */
+@import url(../css/components/about-page.css); /* ok */
+@import url(../css/components/add-task-box.css); /* ok */
+@import url(../css/components/search-box.css); /* ok */
+@import url(../css/vendor/jalalidatepicker.min.css); /* ok */
 
 .main {
   overflow-y: auto;
 
   height: 100vh;
 
-  transition: 0.3s;
+  transition: margin-right 0.6s ease-in-out;
 
   overscroll-behavior: contain;
   scrollbar-width: 4rem;
@@ -54,7 +54,7 @@
 
   text-align: center;
 
-  border-bottom: 1px solid var(--color-neutral-300);
+  border-bottom: 0.1rem solid var(--color-neutral-300);
   border-radius: 0 0 1.6rem 1.6rem;
   background-color: var(--color-neutral-100);
   box-shadow: var(--shadow-md);
@@ -62,5 +62,6 @@
 
 .page {
   display: none;
+
   padding: 0 2.4rem 24rem;
 }
